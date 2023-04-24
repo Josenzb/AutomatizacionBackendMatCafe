@@ -13,8 +13,7 @@ import org.json.simple.parser.ParseException;
 
 import static com.sofkau.questions.ReturnResponse.returnResponse;
 import static com.sofkau.tasks.DoGet.doGet;
-import static com.sofkau.utils.UrlResources.JSONPLACE_BASE_URL;
-import static com.sofkau.utils.UrlResources.POSTS_BY_ID_RESOURCE;
+
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -30,7 +29,7 @@ public class BuscarPostStepDefinition extends ApiSetUp {
     @Given("El usuario se encuentra en la web de JsonPlaceHolder")
     public void elUsuarioSeEncuentraEnLaWebDeJsonPlaceHolder() {
         try {
-            setUp(JSONPLACE_BASE_URL.getValue());
+           // setUp(JSONPLACE_BASE_URL.getValue());
             LOGGER.info("Empezando peticion");
         }catch (Exception e){
             LOGGER.warn(e.getMessage());
@@ -43,7 +42,7 @@ public class BuscarPostStepDefinition extends ApiSetUp {
             id = idPost;
             actor.attemptsTo(
                     doGet()
-                            .withTheResource(POSTS_BY_ID_RESOURCE.getValue() + idPost)
+                         //   .withTheResource(POSTS_BY_ID_RESOURCE.getValue() + idPost)
             );
             LOGGER.info("Peticion realizada");
         } catch (Exception e){

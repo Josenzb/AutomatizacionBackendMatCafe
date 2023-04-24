@@ -1,10 +1,9 @@
 package com.sofkau.models;
-
 import java.util.List;
 import lombok.Data;
 
 @Data
-public class Response{
+public class Curso{
 	private String duration;
 	private String requirements;
 	private String adminId;
