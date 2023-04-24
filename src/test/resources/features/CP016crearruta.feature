@@ -10,4 +10,4 @@ Feature: crear ruta
 
     Examples:
       | title          | description              | duration | code | adminId                    |
-      | "Primer Ruta8" | "Esta es mi primer ruta" | "28"     | 201  | "644690dfbb5b685700e7e05f" |
+      | "Primer Ruta0" | "Esta es mi primer ruta" | "28"     | 201  | "644690dfbb5b685700e7e05f" |

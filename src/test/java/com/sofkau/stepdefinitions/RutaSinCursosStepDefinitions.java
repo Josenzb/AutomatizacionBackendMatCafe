@@ -17,16 +17,14 @@ import static com.sofkau.utils.UrlResources.BASE_URL;
 import static com.sofkau.utils.UrlResources.RESOURCE_CREAR_RUTA;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 
-
-public class CrearRutaStepDefinition extends ApiSetUp {
-
+public class RutaSinCursosStepDefinitions extends ApiSetUp {
     public static Logger LOGGER = Logger.getLogger(CrearRutaStepDefinition.class);
     private final Ruta ruta = new Ruta();
-    private List<String> cursos = new ArrayList<>();
-
-    @Given("que el administrador crea la ruta de aprendizaje")
-    public void queElAdministradorCreaLaRutaDeAprendizaje() {
+    private List<String> listaVacia = new ArrayList<>();
+    @Given("que el administrador crea la ruta de aprendizaje vacia")
+    public void queElAdministradorCreaLaRutaDeAprendizajeVacia() {
         try {
             setUp(BASE_URL.getValue());
             LOGGER.info("Iniciando automatizaciòn en el servicio");
@@ -38,15 +36,14 @@ public class CrearRutaStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("envia titulo {string}, descripcion {string}, duracion {string}, Id admin {string}")
-    public void enviaTituloDescripcionDuracionIdAdmin(String title, String description, String duration, String adminId) {
-        cursos.add("Mi ruta de pru4eba");
+    @When("envia el titulo {string}, descripcion {string}, duracion {string}, Id admin {string}")
+    public void enviaElTituloDescripcionDuracionIdAdmin(String title, String description, String duration, String adminId) {
         try {
             ruta.setTitle(title);
             ruta.setDescription(description);
             ruta.setDuration(duration);
             ruta.setAdminId(adminId);
-            ruta.setCourses(cursos);
+            ruta.setCourses(listaVacia);
             actor.attemptsTo(doPost().withTheResource(RESOURCE_CREAR_RUTA.getValue())
                     .andTheRequestBody(ruta));
 
@@ -61,8 +58,8 @@ public class CrearRutaStepDefinition extends ApiSetUp {
         }
     }
 
-    @Then("se registrara la ruta y status {int}")
-    public void seRegistraraLaRutaYStatus(Integer code) {
+    @Then("se registrara la ruta y un status {int}")
+    public void seRegistraraLaRutaYUnStatus(Integer code) {
         try {
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
@@ -76,6 +73,11 @@ public class CrearRutaStepDefinition extends ApiSetUp {
                                     .body("adminId", equalTo(ruta.getAdminId()))
                     )
             );
+            actor.should(
+                    seeThatResponse("El cuerpo de respuesta no debe ser nulo",
+                            response -> response.body(notNullValue())
+                    )
+            );
             LOGGER.info("Asercion pasada");
         } catch (Exception e) {
             LOGGER.error("Test fallido");
@@ -86,5 +88,4 @@ public class CrearRutaStepDefinition extends ApiSetUp {
             LOGGER.info("Test completado");
         }
     }
-
 }
