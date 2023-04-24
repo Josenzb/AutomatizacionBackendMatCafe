@@ -19,7 +19,7 @@ import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeT
 import static org.hamcrest.core.IsNull.notNullValue;
 
 public class CrearCursoConCamposVaciosStepDefinition  extends ApiSetUp {
-    public static Logger LOGGER= Logger.getLogger(CrearCursoStepDefinition.class);
+    public static Logger LOGGER= Logger.getLogger(CrearCursoConCamposVaciosStepDefinition.class);
     private final Curso curso = new Curso();
     private List<String> contenidoCurso = new ArrayList<>();
 
@@ -80,8 +80,7 @@ public class CrearCursoConCamposVaciosStepDefinition  extends ApiSetUp {
                     )
             );
 
-
-       LOGGER.info("Asercion realizada correctamente con los campos del json");
+            LOGGER.info("Asercion realizada correctamente con los campos del json");
             LOGGER.info(actualResponse.asString());
 
         } catch (Exception e) {
@@ -90,7 +89,5 @@ public class CrearCursoConCamposVaciosStepDefinition  extends ApiSetUp {
             LOGGER.info("Test completado");
         }
     }
-
-
-    }
+}
 
