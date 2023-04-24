@@ -1,8 +1,7 @@
 package com.sofkau.utils;
 
 public enum UrlResources {
-    JSONPLACE_BASE_URL("https://jsonplaceholder.typicode.com/"),
-    POSTS_BY_ID_RESOURCE("posts/");
+    BASE_URL("https://stable-use-production.up.railway.app/");
     private final String value;
 
     UrlResources(String value){
