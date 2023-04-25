@@ -10,10 +10,10 @@ Feature: Crear curso de aprendizaje para la pagina de MatCafe
     Then se registrara el curso y estatus <estatusCode>
 
     Examples:
-      | title                  | description                | duration | requirements           | content          | adminID                    | estatusCode |
-      | "Titulo de curso uno"  | "Este es mi primer curso"  | "1"      | "Ningun requerimiento" | "Contenido uno"  | "644739c75681b2a2806c11bb" | 201         |
-      | "Titulo de curso dos"  | "Este es mi segundo curso" | "2"      | "Ningun requerimiento" | "Contenido dos"  | "644739c75681b2a2806c11bb" | 201         |
-      | "Titulo de curso tres" | "Este es mi tercer  curso" | "3"      | "Ningun requerimiento" | "Contenido tres" | "644739c75681b2a2806c11bb" | 201         |
+      | title                  | description                | duration   | requirements           | content          | adminID                    | estatusCode |
+      | "Titulo de curso uno"  | "Este es mi primer curso"  | "28 dias " | "Ningun requerimiento" | "Contenido uno"  | "644739c75681b2a2806c11bb" | 201         |
+      | "Titulo de curso dos"  | "Este es mi segundo curso" | "28 dias " | "Ningun requerimiento" | "Contenido dos"  | "644739c75681b2a2806c11bb" | 201         |
+      | "Titulo de curso tres" | "Este es mi tercer  curso" | "28 dias " | "Ningun requerimiento" | "Contenido tres" | "644739c75681b2a2806c11bb" | 201         |
 
 
   @CP_021CrearCursoConCamposVacios
@@ -24,11 +24,11 @@ Feature: Crear curso de aprendizaje para la pagina de MatCafe
 
     Examples:
       | title                  | description                | duration | requirements           | content          | adminID                    | estatusCode |
-      | ""                     | "Este es mi primer curso"  | "1"      | "Ningun requerimiento" | "Contenido uno"  | "644690dfbb5b685700e7e05f" | 400         |
-      | "Titulo de curso dos"  | ""                         | "2"      | "Ningun requerimiento" | "Contenido dos"  | "644690dfbb5b685700e7e05f" | 400         |
-      | "Titulo de curso tres" | "Este es mi tercer  curso" | ""       | "Ningun requerimiento" | "Contenido tres" | "644690dfbb5b685700e7e05f" | 400         |
-      | "Titulo de curso tres" | "Este es mi tercer  curso" | "4"      | ""                     | "Contenido tres" | "644690dfbb5b685700e7e05f" | 400         |
-      | "Titulo de curso tres" | "Este es mi tercer  curso" | "4"      | "Ningun requerimiento" | ""               | "644690dfbb5b685700e7e05f" | 400         |
+      | ""                     | "Este es mi primer curso"  | "1"      | "Ningun requerimiento" | "Contenido uno"  | "644739c75681b2a2806c11bb" | 400         |
+      | "Titulo de curso dos"  | ""                         | "2"      | "Ningun requerimiento" | "Contenido dos"  | "644739c75681b2a2806c11bb" | 400         |
+      | "Titulo de curso tres" | "Este es mi tercer  curso" | ""       | "Ningun requerimiento" | "Contenido tres" | "644739c75681b2a2806c11bb" | 400         |
+      | "Titulo de curso tres" | "Este es mi tercer  curso" | "4"      | ""                     | "Contenido tres" | "644739c75681b2a2806c11bb" | 400         |
+      | "Titulo de curso tres" | "Este es mi tercer  curso" | "4"      | "Ningun requerimiento" | ""               | "644739c75681b2a2806c11bb" | 400         |
 
 
   @CP_022CrearCursoConUnIdDeAdministradorInexistenteScenario
@@ -39,6 +39,6 @@ Feature: Crear curso de aprendizaje para la pagina de MatCafe
 
     Examples:
       | title                  | description                | duration | requirements           | content          | adminID  | estatusCode |
-      | "Titulo de curso uno"  | "Este es mi primer curso"  | "1"      | "Ningun requerimiento" | "Contenido uno"  | "1234"   | 500         |
-      | "Titulo de curso dos"  | "Este es mi segundo curso" | "2"      | "Ningun requerimiento" | "Contenido dos"  | "12345"  | 500         |
-      | "Titulo de curso tres" | "Este es mi tercer  curso" | "3"      | "Ningun requerimiento" | "Contenido tres" | "123456" | 500         |
+      | "Titulo de curso uno"  | "Este es mi primer curso"  | "1"      | "Ningun requerimiento" | "Contenido uno"  | "1234"   | 400         |
+      | "Titulo de curso dos"  | "Este es mi segundo curso" | "2"      | "Ningun requerimiento" | "Contenido dos"  | "12345"  | 400         |
+      | "Titulo de curso tres" | "Este es mi tercer  curso" | "3"      | "Ningun requerimiento" | "Contenido tres" | "123456" | 400         |

@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 
 import static com.sofkau.questions.ReturnResponse.returnResponse;
 import static com.sofkau.tasks.DoGet.doGet;
-import static com.sofkau.tasks.DoPost.doPost;
 import static com.sofkau.utils.UrlResources.BASE_URL;
 import static com.sofkau.utils.UrlResources.RESOURCE_CREAR_CURSO;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
@@ -27,28 +26,22 @@ public class BuscarTodosLosCursosStepDefinition extends ApiSetUp {
         }catch (Exception e){
             LOGGER.warn(e.getMessage());
         }
-
     }
 
     @When("envia la solicitud de obtener todos los cursos")
     public void enviaLaSolicitudDeObtenerTodosLosCursos() {
 
         try {
-
-
             actor.attemptsTo(
                     doGet()
                             .withTheResource(RESOURCE_CREAR_CURSO.getValue())
 
             );
-
             System.out.println(SerenityRest.lastResponse().body().asString());
             LOGGER.info("Peticion realizada");
         } catch (Exception e){
             LOGGER.warn(e.getMessage());
         }
-
-
     }
 
     @Then("se obtiene todos los cursos disponibles  en el campus")
