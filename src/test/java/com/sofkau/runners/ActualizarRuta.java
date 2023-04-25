@@ -7,9 +7,9 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        features = {"src/test/resources/features/HUB04obtenerruta.feature"},
+        features = {"src/test/resources/features/HUB19actualizarruta.feature"},
         glue = {"com.sofkau.stepdefinitions"},
-        tags = {"not @CP029_ObtenerTodasLasRutas"}
+        tags = {"@CP040_ActualizarRutaConIdInvalidos"}
 )
-public class ObtenerRutaTest {
+public class ActualizarRuta {
 }

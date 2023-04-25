@@ -2,51 +2,43 @@ package com.sofkau.stepdefinitions.rutaaprendizaje;
 
 import com.sofkau.models.Ruta;
 import com.sofkau.setup.ApiSetUp;
+import com.sofkau.tasks.DoPut;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.sofkau.tasks.DoPost.doPost;
-import static com.sofkau.utils.UrlResources.BASE_URL;
-import static com.sofkau.utils.UrlResources.RESOURCE_CREAR_RUTA;
+import static com.sofkau.utils.UrlResources.*;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 import static org.hamcrest.Matchers.equalTo;
 
-
-public class CrearRutaStepDefinition extends ApiSetUp {
-
-    public static Logger LOGGER = Logger.getLogger(CrearRutaStepDefinition.class);
+public class ActualizarRutaStepDefinition extends ApiSetUp {
+    public static Logger LOGGER = Logger.getLogger(ObtenerRutaIdNoRegistradoStedDefinition.class);
     private final Ruta ruta = new Ruta();
-    private List<String> cursos = new ArrayList<>();
 
-    @Given("que el administrador crea la ruta de aprendizaje")
-    public void queElAdministradorCreaLaRutaDeAprendizaje() {
+    @Given("que el administrador esta en el servicio de actualizar rutas")
+    public void queElAdministradorEstaEnElServicioDeActualizarRutas() {
         try {
             setUp(BASE_URL.getValue());
-            LOGGER.info("Iniciando automatizaciòn en el servicio");
+            LOGGER.info("Iniciando automatizaciòn en el servicio de actualizar ruta");
         } catch (Exception e) {
-            LOGGER.error("Test fallido");
+            LOGGER.error("Test fallido en el servicio  de obtener ruta por Id");
             LOGGER.error(e.getMessage());
             LOGGER.error(String.valueOf(e.getCause()));
             Assertions.fail();
         }
     }
 
-    @When("envia titulo {string}, descripcion {string}, duracion {string}, Id admin {string}")
-    public void enviaTituloDescripcionDuracionIdAdmin(String title, String description, String duration, String adminId) {
-        cursos.add("Titulo de curso uno");
+    @When("envia  datos de actualizacion id {string}, titulo {string}, descripcion {string}, duracion {string}, Id admin {string}")
+    public void enviaDatosDeActualizacionIdTituloDescripcionDuracionIdAdmin(String id, String title, String description, String duration, String adminId) {
+
         try {
             ruta.setTitle(title);
             ruta.setDescription(description);
             ruta.setDuration(duration);
             ruta.setAdminId(adminId);
-            ruta.setCourses(cursos);
-            actor.attemptsTo(doPost().withTheResource(RESOURCE_CREAR_RUTA.getValue())
+            actor.attemptsTo(DoPut.doPut().withTheResource(RESOURCE_ACTUALIZAR_RUTA.getValue() + id)
                     .andTheRequestBody(ruta));
 
             LOGGER.info("Datos enviados correctamente");
@@ -57,14 +49,15 @@ public class CrearRutaStepDefinition extends ApiSetUp {
             LOGGER.error(e.getMessage());
             LOGGER.error(String.valueOf(e.getCause()));
             Assertions.fail();
+
         }
     }
 
-    @Then("se registrara la ruta y status {int}")
-    public void seRegistraraLaRutaYStatus(Integer code) {
+    @Then("se actualizara la ruta junto con un status {int}")
+    public void seActualizaraLaRutaJuntoConUnStatus(Integer code) {
         try {
             actor.should(
-                    seeThatResponse("El codigo de respuesta es: " ,
+                    seeThatResponse("El codigo de respuesta es: ",
                             response -> response.statusCode(code)),
 
                     seeThatResponse("Se debe mostrar la ruta creada",
@@ -75,7 +68,7 @@ public class CrearRutaStepDefinition extends ApiSetUp {
                                     .body("adminId", equalTo(ruta.getAdminId()))
                     )
             );
-            LOGGER.info("Asercion pasada");
+            LOGGER.info("La respuesta tiene el código de estado esperado");
         } catch (Exception e) {
             LOGGER.error("Test fallido");
             LOGGER.error(e.getMessage());
@@ -84,6 +77,6 @@ public class CrearRutaStepDefinition extends ApiSetUp {
         } finally {
             LOGGER.info("Test completado");
         }
-    }
 
+    }
 }

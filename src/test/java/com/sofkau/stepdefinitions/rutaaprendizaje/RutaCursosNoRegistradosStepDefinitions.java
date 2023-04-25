@@ -1,4 +1,4 @@
-package com.sofkau.stepdefinitions;
+package com.sofkau.stepdefinitions.rutaaprendizaje;
 
 import com.sofkau.models.Ruta;
 import com.sofkau.setup.ApiSetUp;

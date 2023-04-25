@@ -1,4 +1,4 @@
-package com.sofkau.stepdefinitions;
+package com.sofkau.stepdefinitions.rutaaprendizaje;
 
 import com.sofkau.models.Ruta;
 import com.sofkau.setup.ApiSetUp;
@@ -16,7 +16,6 @@ import static com.sofkau.tasks.DoPost.doPost;
 import static com.sofkau.utils.UrlResources.BASE_URL;
 import static com.sofkau.utils.UrlResources.RESOURCE_CREAR_RUTA;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class RutaSinCursosStepDefinitions extends ApiSetUp {

@@ -1,4 +1,4 @@
-package com.sofkau.stepdefinitions;
+package com.sofkau.stepdefinitions.rutaaprendizaje;
 
 import com.sofkau.models.Ruta;
 import com.sofkau.setup.ApiSetUp;
@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class CrearRutaRegistradaStepDefinition extends ApiSetUp {
-    public static Logger LOGGER = Logger.getLogger(CrearRutaStepDefinition.class);
+    public static Logger LOGGER = Logger.getLogger(CrearRutaRegistradaStepDefinition.class);
     private final Ruta ruta = new Ruta();
     private List<String> cursos = new ArrayList<>();
     @Given("que el administrador crea la ruta de aprendizaje registrada")

@@ -9,16 +9,15 @@ import org.apache.http.HttpStatus;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
-
-import static com.sofkau.utils.UrlResources.BASE_URL;
-import static com.sofkau.utils.UrlResources.RESOURCE_CREAR_RUTA;
+import static com.sofkau.utils.UrlResources.*;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 import static org.hamcrest.Matchers.notNullValue;
 
-public class ObtenerRutaStepDefinitions extends ApiSetUp {
-    public static Logger LOGGER = Logger.getLogger(ObtenerRutaStepDefinitions.class);
-    @Given("que el aprendiz desea obtener la informacion de todas la rutas de aprendizaje")
-    public void queElAprendizDeseaObtenerLaInformacionDeTodasLaRutasDeAprendizaje() {
+public class ObtenerRutaIdStepDefinition extends ApiSetUp {
+    public static Logger LOGGER = Logger.getLogger(ObtenerRutaIdStepDefinition.class);
+
+    @Given("que el administrador esta en el servicio de rutas")
+    public void queElAdministradorEstaEnElServicioDeRutas() {
         try {
             setUp(BASE_URL.getValue());
             LOGGER.info("Iniciando automatizaciòn en el servicio de obtener ruta");
@@ -28,26 +27,27 @@ public class ObtenerRutaStepDefinitions extends ApiSetUp {
             LOGGER.error(String.valueOf(e.getCause()));
             Assertions.fail();
         }
+
     }
 
-    @When("se envia la peticion para obtener todas las rutas")
-    public void seEnviaLaPeticionParaObtenerTodasLasRutas() {
+    @When("se envia la peticion para obtener  ruta por {string}")
+    public void seEnviaLaPeticionParaObtenerRutaPor(String id) {
         try {
 
-            actor.attemptsTo(DoGet.doGet().withTheResource(RESOURCE_CREAR_RUTA.getValue()));
-            LOGGER.info("Enviò de peticiòn para obtener rutas");
+            actor.attemptsTo(DoGet.doGet().withTheResource(  RESOURCE_OBTENER_RUTA.getValue() + id));
+            LOGGER.info("Enviò de peticiòn para obtene ruta por id");
 
         } catch (Exception e) {
 
-            LOGGER.error("Error al enviar los datos");
+            LOGGER.error("Error al enviar la petición Get");
             LOGGER.error(e.getMessage());
             LOGGER.error(String.valueOf(e.getCause()));
             Assertions.fail();
         }
     }
 
-    @Then("se mostrara la informacion de todas las rutas de aprendizaje y un estatus {int}")
-    public void seMostraraLaInformacionDeTodasLasRutasDeAprendizajeYUnEstatus(Integer code)  {
+    @Then("se mostrara la informacion de la ruta de aprendizaje junto con el estatus {int}")
+    public void seMostraraLaInformacionDeLaRutaDeAprendizajeJuntoConElEstatus(Integer code) {
         try {
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
@@ -59,7 +59,7 @@ public class ObtenerRutaStepDefinitions extends ApiSetUp {
                             response -> response.body(notNullValue()))
             );
 
-            LOGGER.info("Asercion pasada");
+            LOGGER.info("Asercion pasada. La respuesta tiene el código de estado esperado");
         } catch (Exception e) {
             LOGGER.error("Test fallido");
             LOGGER.error(e.getMessage());
@@ -69,5 +69,6 @@ public class ObtenerRutaStepDefinitions extends ApiSetUp {
             LOGGER.info("Test completado");
         }
     }
-
 }
+
+
