@@ -3,7 +3,7 @@ Feature: Crear cuenta de usuario
   WANT crear cuentas de usuario
   BECAUSE tener múltiples usuarios
 
-  @prueba
+  @CrearUsuarios
   Scenario: Crear administrador exitoso
     Given que el administrador realiza una petición para crear un usuario con el rol de administrador
     When el administrador envía la petición con el nombre "iñigo lopez" y el correo "suparcorreo@gmail.com"
@@ -63,25 +63,25 @@ Feature: Crear cuenta de usuario
       | "Juan/&-*_*" | "jojo1@gmail.com" | 400    |
       | "Juan***"    | "jijo2@gmail.com" | 400    |
 
-  @prueba
+  @CrearUsuarios
   Scenario: Crear administrador existente
     Given que el administrador intenta crear un usuario admin ya existente
     When se envia la petición con el nombre "Franco" y el correo "Franco@auirro1ba.com"
     Then no se creara la cuenta de usuario y se recibirá un codigo de status "400"
 
-  @prueba
+  @CrearUsuarios
   Scenario: Crear aprendiz existente
     Given que el administrador intenta crear un usuario aprendiz ya existente
     When se envia la peticion con el nombre "Juanes" y el correo "juanpz@gmail.com"
     Then no se creara la cuenta de aprendiz y se recibirá un codigo de status "400"
 
-  @prueba
+  @CrearUsuarios
   Scenario: Crear administrador con correo de un aprendiz
     Given que el administrador intenta crear un usuario admin con el correo de un estudiante
     When se envia la peticion con el nombre "Franco" y el correo "juanpz@gmail.com" como aprendiz
     Then no se creara la cuenta y se recibirá un codigo de status "400"
 
-  @prueba
+  @CrearUsuarios
   Scenario: Crear aprendiz con correo de un administrador
     Given que el administrador intenta crear un usuario aprendiz con el correo de un admin
     When se envia la peticion con el nombre "Franco" y el correo "Franco@auirro1ba.com" como admin
