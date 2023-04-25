@@ -5,7 +5,8 @@ public enum UrlResources {
     RESOURCE_CREATE_USERS("createUser"),
     RESOURCE_SEARCH_LEARNER("learner/"),
     RESOURCE_SEARCH_ADMIN("admin/"),
-    RESOURCE_SEARCH_ACCOUNTS("adminAndLearnerByEmail/");
+    RESOURCE_SEARCH_ACCOUNTS("adminAndLearnerByEmail/"),
+    RESOURCE_GRADER_STUDENT("graderStudent");
     private final String value;
 
     UrlResources(String value){
