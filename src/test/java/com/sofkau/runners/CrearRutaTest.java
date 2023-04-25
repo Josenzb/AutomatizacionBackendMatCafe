@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         features = {"src/test/resources/features/HUB02crearruta.feature"},
         glue = {"com.sofkau.stepdefinitions"},
-        tags = {"@CP19_RutaConCamposVacios"}
+        tags = {"CP18_RutaSinCursos"}
 )
-public class CrearRuta {
+public class CrearRutaTest {
 }

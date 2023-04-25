@@ -11,5 +11,5 @@ import org.junit.runner.RunWith;
         glue = {"com.sofkau.stepdefinitions"},
         tags = {"@CP040_ActualizarRutaConIdInvalidos"}
 )
-public class ActualizarRuta {
+public class ActualizarRutaTest {
 }
