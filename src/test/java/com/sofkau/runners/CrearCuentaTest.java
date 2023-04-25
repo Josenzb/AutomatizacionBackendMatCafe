@@ -7,9 +7,9 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        features = {"src/test/resources/features/buscarpost.feature"},
+        features = {"src/test/resources/features/HUB01crearcuentas.feature"},
         glue = {"com.sofkau.stepdefinitions"},
-        tags = {}
+        tags = {"@CrearUsuarios"}
 )
-public class BuscarPostTest {
+public class CrearCuentaTest {
 }

@@ -1,7 +1,8 @@
 package com.sofkau.utils;
 
 public enum UrlResources {
-    BASE_URL("https://stable-use-production.up.railway.app/");
+    BASE_URL("https://campus-matcafe-backend-sofka-production.up.railway.app/"),
+    RESOURCE_CREATE_USERS("createUser");
     private final String value;
 
     UrlResources(String value){
