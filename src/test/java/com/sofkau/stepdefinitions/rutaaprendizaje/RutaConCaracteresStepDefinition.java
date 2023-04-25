@@ -5,7 +5,6 @@ import com.sofkau.setup.ApiSetUp;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.http.HttpStatus;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
@@ -16,14 +15,15 @@ import static com.sofkau.tasks.DoPost.doPost;
 import static com.sofkau.utils.UrlResources.BASE_URL;
 import static com.sofkau.utils.UrlResources.RESOURCE_CREAR_RUTA;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
-public class RutaCursosNoRegistradosStepDefinitions extends ApiSetUp {
-    public static Logger LOGGER = Logger.getLogger(CrearRutaStepDefinition.class);
+public class RutaConCaracteresStepDefinition extends ApiSetUp {
+    public static Logger LOGGER = Logger.getLogger(RutaCamposVaciosStepDefinitions.class);
     private final Ruta ruta = new Ruta();
     private List<String> cursos = new ArrayList<>();
-    @Given("que el administrador asigna los datos para crear una ruta de aprendizaje con cursos que no existen")
-    public void queElAdministradorAsignaLosDatosParaCrearUnaRutaDeAprendizajeConCursosQueNoExisten() {
+    @Given("que el administrador crea la ruta de aprendizaje con caracteres especiales")
+    public void queElAdministradorCreaLaRutaDeAprendizajeConCaracteresEspeciales() {
         try {
             setUp(BASE_URL.getValue());
             LOGGER.info("Iniciando automatizaciòn en el servicio");
@@ -35,8 +35,9 @@ public class RutaCursosNoRegistradosStepDefinitions extends ApiSetUp {
         }
     }
 
-    @When("envia datos de titulo {string}, descripcion {string}, duracion {string}, Id admin {string}")
-    public void enviaDatosDeTituloDescripcionDuracionIdAdmin(String title, String description, String duration, String adminId) {
+    @When("envia un titulo {string}, una descripcion {string}, duracion {string}, Id admin {string}")
+    public void enviaUnTituloUnaDescripcionDuracionIdAdmin(String title, String description, String duration, String adminId) {
+        cursos.add("Titulo de curso uno");
         try {
             ruta.setTitle(title);
             ruta.setDescription(description);
@@ -57,17 +58,16 @@ public class RutaCursosNoRegistradosStepDefinitions extends ApiSetUp {
         }
     }
 
-    @Then("no deberian agregarse cursos que no existen a la ruta y un status {int}")
-    public void noDeberianAgregarseCursosQueNoExistenALaRutaYUnStatus(Integer code) {
+    @Then("se registrara la ruta y con un status {int}")
+    public void seRegistraraLaRutaYConUnStatus(Integer code) {
         try {
             actor.should(
-                    seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_BAD_REQUEST,
+                    seeThatResponse("El codigo de respuesta es: " ,
                             response -> response.statusCode(code))
             );
             actor.should(
                     seeThatResponse("El cuerpo de respuesta no debe ser nulo",
-                            response -> response.body(notNullValue())
-                    )
+                            response -> response.body(notNullValue()))
             );
             LOGGER.info("Asercion pasada");
         } catch (Exception e) {
@@ -78,5 +78,7 @@ public class RutaCursosNoRegistradosStepDefinitions extends ApiSetUp {
         } finally {
             LOGGER.info("Test completado");
         }
+
     }
+
 }

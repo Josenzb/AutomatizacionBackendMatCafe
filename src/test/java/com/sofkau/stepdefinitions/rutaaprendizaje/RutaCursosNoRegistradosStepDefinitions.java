@@ -16,15 +16,14 @@ import static com.sofkau.tasks.DoPost.doPost;
 import static com.sofkau.utils.UrlResources.BASE_URL;
 import static com.sofkau.utils.UrlResources.RESOURCE_CREAR_RUTA;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
-public class RutaCamposVaciosStepDefinitions extends ApiSetUp {
-    public static Logger LOGGER = Logger.getLogger(CrearRutaStepDefinition.class);
+public class RutaCursosNoRegistradosStepDefinitions extends ApiSetUp {
+    public static Logger LOGGER = Logger.getLogger(RutaCursosNoRegistradosStepDefinitions.class);
     private final Ruta ruta = new Ruta();
     private List<String> cursos = new ArrayList<>();
-    @Given("que el administrador crea la ruta de aprendizaje con campos vacios")
-    public void queElAdministradorCreaLaRutaDeAprendizajeConCamposVacios() {
+    @Given("que el administrador asigna los datos para crear una ruta de aprendizaje con cursos que no existen")
+    public void queElAdministradorAsignaLosDatosParaCrearUnaRutaDeAprendizajeConCursosQueNoExisten() {
         try {
             setUp(BASE_URL.getValue());
             LOGGER.info("Iniciando automatizaciòn en el servicio");
@@ -36,8 +35,8 @@ public class RutaCamposVaciosStepDefinitions extends ApiSetUp {
         }
     }
 
-    @When("envia titulo {string}, descripcion {string}, duracion {string}, cursos <courses>, Id admin {string}")
-    public void enviaTituloDescripcionDuracionCursosCoursesIdAdmin(String title, String description, String duration, String adminId) {
+    @When("envia datos de titulo {string}, descripcion {string}, duracion {string}, Id admin {string}")
+    public void enviaDatosDeTituloDescripcionDuracionIdAdmin(String title, String description, String duration, String adminId) {
         try {
             ruta.setTitle(title);
             ruta.setDescription(description);
@@ -58,11 +57,11 @@ public class RutaCamposVaciosStepDefinitions extends ApiSetUp {
         }
     }
 
-    @Then("se registrara la ruta y un codigo de status {int}")
-    public void seRegistraraLaRutaYUnCodigoDeStatus(Integer code) {
+    @Then("no deberian agregarse cursos que no existen a la ruta y un status {int}")
+    public void noDeberianAgregarseCursosQueNoExistenALaRutaYUnStatus(Integer code) {
         try {
             actor.should(
-                    seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
+                    seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_BAD_REQUEST,
                             response -> response.statusCode(code))
             );
             actor.should(

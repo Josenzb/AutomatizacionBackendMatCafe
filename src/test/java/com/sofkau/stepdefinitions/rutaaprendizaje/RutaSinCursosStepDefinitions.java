@@ -20,7 +20,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class RutaSinCursosStepDefinitions extends ApiSetUp {
-    public static Logger LOGGER = Logger.getLogger(CrearRutaStepDefinition.class);
+    public static Logger LOGGER = Logger.getLogger(RutaSinCursosStepDefinitions.class);
     private final Ruta ruta = new Ruta();
     private List<String> listaVacia = new ArrayList<>();
     @Given("que el administrador crea la ruta de aprendizaje vacia")
@@ -62,16 +62,10 @@ public class RutaSinCursosStepDefinitions extends ApiSetUp {
     public void seRegistraraLaRutaYUnStatus(Integer code) {
         try {
             actor.should(
-                    seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
-                            response -> response.statusCode(code)),
+                    seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_BAD_REQUEST,
+                            response -> response.statusCode(code))
 
-                    seeThatResponse("Se debe mostrar el libro creado",
-                            response -> response
-                                    .body("title", equalTo(ruta.getTitle()))
-                                    .body("description", equalTo(ruta.getDescription()))
-                                    .body("duration", equalTo(ruta.getDuration()))
-                                    .body("adminId", equalTo(ruta.getAdminId()))
-                    )
+
             );
             actor.should(
                     seeThatResponse("El cuerpo de respuesta no debe ser nulo",
