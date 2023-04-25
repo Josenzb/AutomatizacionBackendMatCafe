@@ -61,7 +61,7 @@ public class BuscarCursoPorUnIdEspecificoStepDefinition  extends ApiSetUp {
     @Then("se obtendra el curso junto con un estatus {int}")
     public void seObtendraElCursoJuntoConUnEstatus(Integer statusCode) {
 
-        Response actualResponse = returnResponse().answeredBy(actor);
+       Response actualResponse = returnResponse().answeredBy(actor);
         try {
 
             actor.should(

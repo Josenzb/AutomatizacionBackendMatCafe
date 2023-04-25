@@ -1,5 +1,4 @@
 package com.sofkau.stepdefinitions;
-
 import com.sofkau.setup.ApiSetUp;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,17 +8,18 @@ import net.serenitybdd.rest.SerenityRest;
 import org.apache.log4j.Logger;
 
 import static com.sofkau.questions.ReturnResponse.returnResponse;
-import static com.sofkau.tasks.DoGet.doGet;
+import static com.sofkau.tasks.DoDelete.doDelete;
 import static com.sofkau.utils.UrlResources.BASE_URL;
 import static com.sofkau.utils.UrlResources.RESOURCE_CREAR_CURSO;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 import static org.hamcrest.core.IsNull.notNullValue;
 
-public class BuscarCursoPorUnIdEspecificoQueNoExisteStepDefinition extends ApiSetUp {
-    public static Logger LOGGER= Logger.getLogger(BuscarCursoPorUnIdEspecificoQueNoExisteStepDefinition.class);
+public class EliminarCursoStepDefinition extends ApiSetUp {
+    public static Logger LOGGER= Logger.getLogger(EliminarCursoStepDefinition.class);
 
-    @Given("un aprendiz quiere obtener un curso por un id que no existe")
-    public void unAprendizQuiereObtenerUnCursoPorUnIdQueNoExiste() {
+
+    @Given("que el administrador desea eliminar un curso")
+    public void queElAdministradorDeseaEliminarUnCurso() {
         try {
             setUp(BASE_URL.getValue());
             LOGGER.info("Empezando peticion");
@@ -28,12 +28,13 @@ public class BuscarCursoPorUnIdEspecificoQueNoExisteStepDefinition extends ApiSe
         }
     }
 
-    @When("envia  un id que no existe  {string} y drealiza la busqueda titulo {string}, descricion {string}, duracion {string}, requerimientos {string}, contenido {string} y el adminID incorrecto {string}")
-    public void enviaUnIdQueNoExisteYDrealizaLaBusquedaTituloDescricionDuracionRequerimientosContenidoYElAdminIDIncorrecto(String idCurso, String string2, String string3, String string4, String string5, String string6, String string7) {
+    @When("envia la solicitud  con el  id del curso que desea eliminar {string}")
+    public void enviaLaSolicitudConElIdDelCursoQueDeseaEliminar(String idCurso) {
         try {
             actor.attemptsTo(
-                    doGet()
-                            .withTheResource(RESOURCE_CREAR_CURSO.getValue()+ idCurso)
+                    doDelete()
+                            .conElRecurso(RESOURCE_CREAR_CURSO.getValue())
+                            .yConelId(idCurso)
             );
             System.out.println(SerenityRest.lastResponse().body().asString());
             LOGGER.info("Peticion realizada");
@@ -42,9 +43,8 @@ public class BuscarCursoPorUnIdEspecificoQueNoExisteStepDefinition extends ApiSe
         }
     }
 
-    @Then("se obtendra un mensaje de error  junto con un estatus {int}")
-    public void seObtendraUnMensajeDeErrorJuntoConUnEstatus(Integer statusCode) {
-
+    @Then("se obtiene un estatus de respuesta {int}")
+    public void seObtieneUnEstatusDeRespuesta(Integer statusCode) {
         Response actualResponse = returnResponse().answeredBy(actor);
 
         try {
@@ -60,7 +60,6 @@ public class BuscarCursoPorUnIdEspecificoQueNoExisteStepDefinition extends ApiSe
                     )
             );
 
-
             LOGGER.info("Asercion realizada correctamente con los campos del json");
             LOGGER.info(actualResponse.asString());
 
@@ -71,6 +70,4 @@ public class BuscarCursoPorUnIdEspecificoQueNoExisteStepDefinition extends ApiSe
         }
     }
 }
-
-
 

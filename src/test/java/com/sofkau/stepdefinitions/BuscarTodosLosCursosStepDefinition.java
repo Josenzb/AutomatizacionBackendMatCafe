@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import net.serenitybdd.rest.SerenityRest;
+import org.apache.http.HttpStatus;
 import org.apache.log4j.Logger;
 
 import static com.sofkau.questions.ReturnResponse.returnResponse;
@@ -51,7 +52,7 @@ public class BuscarTodosLosCursosStepDefinition extends ApiSetUp {
         try {
             actor.should(
                     seeThatResponse("Se debe mostrar el  estatus correspondiente",
-                            response -> response.statusCode(200)
+                            response -> response.statusCode(HttpStatus.SC_OK)
                     )
             );
 
