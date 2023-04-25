@@ -50,6 +50,7 @@ public class CrearAprendizEspecialesStepDefinition extends ApiSetUp {
     public void noSeCrearáElUsuarioDeAprendizConDatosEspecialesYSeRecibiráUnEstatus(Integer status) {
         try {
             Response actualResponse = returnResponse().answeredBy(actor);
+            LOGGER.info(actualResponse.asString());
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(status)),

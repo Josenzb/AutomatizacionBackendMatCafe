@@ -17,12 +17,11 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
-public class CrearAprendizExitosoStepDefinition extends ApiSetUp {
-
-    public static Logger LOGGER= Logger.getLogger(CrearAprendizExitosoStepDefinition.class);
+public class CrearAprendizCorreoAdminStepDefinition extends ApiSetUp {
+    public static Logger LOGGER= Logger.getLogger(CrearAprendizCorreoAdminStepDefinition.class);
     private final Usuario usuario= new Usuario();
-    @Given("que el administrador realiza una petición para crear un usuario con el rol de aprendiz")
-    public void queElAdministradorRealizaUnaPeticiónParaCrearUnUsuarioConElRolDeAprendiz() {
+    @Given("que el administrador intenta crear un usuario aprendiz con el correo de un admin")
+    public void queElAdministradorIntentaCrearUnUsuarioAprendizConElCorreoDeUnAdmin() {
         try{
             setUp(BASE_URL.getValue());
             LOGGER.info("Empezando peticion");
@@ -31,11 +30,11 @@ public class CrearAprendizExitosoStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("el administrador envía la petición con el nombre {string} y el correo {string} del aprendiz")
-    public void elAdministradorEnvíaLaPeticiónConElNombreYElCorreoDelAprendiz(String nameUser, String email) {
+    @When("se envia la peticion con el nombre {string} y el correo {string} como admin")
+    public void seEnviaLaPeticionConElNombreYElCorreoComoAdmin(String nombre, String correo) {
         try{
-            usuario.setName(nameUser);
-            usuario.setEmail(email);
+            usuario.setName(nombre);
+            usuario.setEmail(correo);
             usuario.setRol(false);
             actor.attemptsTo(
                     doPost()
@@ -47,14 +46,14 @@ public class CrearAprendizExitosoStepDefinition extends ApiSetUp {
             LOGGER.warn(e.getMessage());
         }
     }
-    @Then("se creará el usuario aprendiz correctamente")
-    public void seCrearáElUsuarioAprendizCorrectamente() {
+    @Then("no se creara la cuenta aprendiz y se recibirá un codigo de status {string}")
+    public void noSeCrearaLaCuentaAprendizYSeRecibiráUnCodigoDeStatus(String status) {
         try {
             Response actualResponse = returnResponse().answeredBy(actor);
             LOGGER.info(actualResponse.asString());
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
-                            response -> response.statusCode(201)),
+                            response -> response.statusCode(Integer.parseInt(status))),
                     seeThat("Retorna información",
                             act -> actualResponse, notNullValue())
             );

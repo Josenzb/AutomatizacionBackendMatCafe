@@ -50,6 +50,7 @@ public class CrearAdminExitosoStepDefinition extends ApiSetUp {
     public void seCrearáElUsuarioCorrectamente() {
         try {
             Response actualResponse = returnResponse().answeredBy(actor);
+            LOGGER.info(actualResponse.asString());
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(201)),

@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         features = {"src/test/resources/features/HUB01crearcuentas.feature"},
         glue = {"com.sofkau.stepdefinitions"},
-        tags = {"@CrearUsuarios"}
+        tags = {"@prueba"}
 )
 public class CrearCuentaTest {
 }

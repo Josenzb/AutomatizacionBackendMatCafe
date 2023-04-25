@@ -49,6 +49,7 @@ public class CrearAdminVacioStepDefinition extends ApiSetUp {
     public void noSeCrearáElUsuarioConDatosVacíosYSeRecibiráUnEstatus(Integer status) {
         try {
             Response actualResponse = returnResponse().answeredBy(actor);
+            LOGGER.info(actualResponse.asString());
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(status)),
