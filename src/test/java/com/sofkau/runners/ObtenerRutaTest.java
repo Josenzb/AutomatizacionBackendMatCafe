@@ -7,9 +7,9 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        features = {"src/test/resources/features/buscarpost.feature"},
+        features = {"src/test/resources/features/HUB04obtenerruta.feature"},
         glue = {"com.sofkau.stepdefinitions"},
-        tags = {}
+        tags = {"not @CP029_ObtenerTodasLasRutas"}
 )
-public class BuscarPostTest {
+public class ObtenerRutaTest {
 }
