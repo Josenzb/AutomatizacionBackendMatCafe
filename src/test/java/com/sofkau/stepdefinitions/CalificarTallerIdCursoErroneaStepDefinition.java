@@ -20,8 +20,8 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 public class CalificarTallerIdCursoErroneaStepDefinition extends ApiSetUp {
     public static Logger LOGGER= Logger.getLogger(CalificarTallerIdCursoErroneaStepDefinition.class);
     private final Calificacion calificacion = new Calificacion();
-    @Given("que el administrador realiza una petición de calificacion de reto con una id de curso erronea")
-    public void queElAdministradorRealizaUnaPeticiónDeCalificacionDeRetoConUnaIdDeCursoErronea() {
+    @Given("que el administrador realiza una peticion de calificacion de reto con una id de curso erronea")
+    public void queElAdministradorRealizaUnaPeticionDeCalificacionDeRetoConUnaIdDeCursoErronea() {
         try{
             setUp(BASE_URL.getValue());
             LOGGER.info("Empezando peticion");
@@ -30,8 +30,8 @@ public class CalificarTallerIdCursoErroneaStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("el administrador envía la petición con la {int} el comentario {string} el idcurso erronea {string} y la idaprendiz {string}")
-    public void elAdministradorEnvíaLaPeticiónConLaElComentarioElIdcursoErroneaYLaIdaprendiz(Integer nota, String comentario,
+    @When("el administrador envia la peticion con la {int} el comentario {string} el idcurso erronea {string} y la idaprendiz {string}")
+    public void elAdministradorEnviaLaPeticionConLaElComentarioElIdcursoErroneaYLaIdaprendiz(Integer nota, String comentario,
                                                                                              String idCurso, String idAprendiz) {
         try{
             calificacion.setGrade(nota);
@@ -56,7 +56,7 @@ public class CalificarTallerIdCursoErroneaStepDefinition extends ApiSetUp {
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(status)),
-                    seeThat("Retorna información",
+                    seeThat("Retorna informacion",
                             act -> actualResponse, notNullValue())
             );
             LOGGER.info("Asercion exitosa");

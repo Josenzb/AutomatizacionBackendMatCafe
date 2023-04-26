@@ -74,7 +74,7 @@ public class CrearRutaRegistradaStepDefinition extends ApiSetUp {
                                             .body("adminId", equalTo(ruta.getAdminId()))
                             )
                     );
-                    LOGGER.info("La respuesta tiene el código de estado esperado");
+                    LOGGER.info("La respuesta tiene el codigo de estado esperado");
                     break;
                 case 400:
                     actor.should(
@@ -89,7 +89,7 @@ public class CrearRutaRegistradaStepDefinition extends ApiSetUp {
                     break;
                            }
         } catch (AssertionError e) {
-            LOGGER.error("La respuesta no tiene el código de estado esperado");
+            LOGGER.error("La respuesta no tiene el codigo de estado esperado");
             LOGGER.error(e.getMessage());
             Assertions.fail(e.getMessage());
         } finally {

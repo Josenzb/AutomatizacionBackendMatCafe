@@ -19,8 +19,8 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 public class CrearAdminExitosoStepDefinition extends ApiSetUp {
     public static Logger LOGGER= Logger.getLogger(CrearAdminExitosoStepDefinition.class);
     private final Usuario usuario= new Usuario();
-    @Given("que el administrador realiza una petición para crear un usuario con el rol de administrador")
-    public void queElAdministradorRealizaUnaPeticiónParaCrearUnUsuarioConElRolDeAdministrador() {
+    @Given("que el administrador realiza una peticion para crear un usuario con el rol de administrador")
+    public void queElAdministradorRealizaUnaPeticionParaCrearUnUsuarioConElRolDeAdministrador() {
         try{
             setUp(BASE_URL.getValue());
             LOGGER.info("Empezando peticion");
@@ -29,8 +29,8 @@ public class CrearAdminExitosoStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("el administrador envía la petición con el nombre {string} y el correo {string}")
-    public void elAdministradorEnvíaLaPeticiónConElNombreYElCorreo(String nameUser, String email) {
+    @When("el administrador envia la peticion con el nombre {string} y el correo {string}")
+    public void elAdministradorEnviaLaPeticionConElNombreYElCorreo(String nameUser, String email) {
         try{
             usuario.setName(nameUser);
             usuario.setEmail(email);
@@ -46,15 +46,15 @@ public class CrearAdminExitosoStepDefinition extends ApiSetUp {
         }
     }
 
-    @Then("se creará el usuario correctamente")
-    public void seCrearáElUsuarioCorrectamente() {
+    @Then("se creara el usuario correctamente")
+    public void seCrearaElUsuarioCorrectamente() {
         try {
             Response actualResponse = returnResponse().answeredBy(actor);
             LOGGER.info(actualResponse.asString());
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(201)),
-                    seeThat("Retorna información",
+                    seeThat("Retorna informacion",
                             act -> actualResponse, notNullValue())
             );
             LOGGER.info("Asercion exitosa");

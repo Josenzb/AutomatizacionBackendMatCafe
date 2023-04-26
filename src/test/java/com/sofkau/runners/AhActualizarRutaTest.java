@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         features = {"src/test/resources/features/HUB19actualizarruta.feature"},
         glue = {"com.sofkau.stepdefinitions"},
-        tags = {""}
+        tags = {}
 )
 public class AhActualizarRutaTest {
 }

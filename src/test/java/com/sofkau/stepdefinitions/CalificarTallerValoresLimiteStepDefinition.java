@@ -21,8 +21,8 @@ public class CalificarTallerValoresLimiteStepDefinition extends ApiSetUp {
     public static Logger LOGGER= Logger.getLogger(CalificarTallerValoresLimiteStepDefinition.class);
     private final Calificacion calificacion = new Calificacion();
 
-    @Given("que el administrador realiza una petición de calificacion de reto con valores limite")
-    public void queElAdministradorRealizaUnaPeticiónDeCalificacionDeRetoConValoresLimite() {
+    @Given("que el administrador realiza una peticion de calificacion de reto con valores limite")
+    public void queElAdministradorRealizaUnaPeticionDeCalificacionDeRetoConValoresLimite() {
         try{
             setUp(BASE_URL.getValue());
             LOGGER.info("Empezando peticion");
@@ -31,8 +31,8 @@ public class CalificarTallerValoresLimiteStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("el administrador envía la petición con al limite {int} el comentario {string} el idcurso {string} y la idaprendiz {string}")
-    public void elAdministradorEnvíaLaPeticiónConAlLimiteElComentarioElIdcursoYLaIdaprendiz(Integer nota, String comentario,
+    @When("el administrador envia la peticion con al limite {int} el comentario {string} el idcurso {string} y la idaprendiz {string}")
+    public void elAdministradorEnviaLaPeticionConAlLimiteElComentarioElIdcursoYLaIdaprendiz(Integer nota, String comentario,
                                                                                             String idCurso, String idAprendiz) {
         try{
             calificacion.setGrade(nota);
@@ -57,7 +57,7 @@ public class CalificarTallerValoresLimiteStepDefinition extends ApiSetUp {
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(status)),
-                    seeThat("Retorna información",
+                    seeThat("Retorna informacion",
                             act -> actualResponse, notNullValue())
             );
             LOGGER.info("Asercion exitosa");

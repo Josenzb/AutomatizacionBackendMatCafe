@@ -22,8 +22,8 @@ public class BuscarCuentasExitosoStepDefinition extends ApiSetUp {
     public static Logger LOGGER= Logger.getLogger(BuscarAprendizExitosoStepDefinition.class);
     JSONObject responseBody = null;
     JSONParser parser = new JSONParser();
-    @Given("que el administrador realiza una petición para obtener una cuenta")
-    public void queElAdministradorRealizaUnaPeticiónParaObtenerUnaCuenta() {
+    @Given("que el administrador realiza una peticion para obtener una cuenta")
+    public void queElAdministradorRealizaUnaPeticionParaObtenerUnaCuenta() {
         try{
             setUp(BASE_URL.getValue());
             LOGGER.info("Empezando peticion");
@@ -32,8 +32,8 @@ public class BuscarCuentasExitosoStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("el administrador envía la peticion con el correo {string}")
-    public void elAdministradorEnvíaLaPeticionConElCorreo(String correo) {
+    @When("el administrador envia la peticion con el correo {string}")
+    public void elAdministradorEnviaLaPeticionConElCorreo(String correo) {
         try{
             actor.attemptsTo(
                     doGet()
@@ -53,7 +53,7 @@ public class BuscarCuentasExitosoStepDefinition extends ApiSetUp {
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(status)),
-                    seeThat("Retorna información",
+                    seeThat("Retorna informacion",
                             act -> actualResponse, notNullValue()),
                     seeThat("Validar el correo",
                             email -> responseBody.get("email"), equalTo(correo))

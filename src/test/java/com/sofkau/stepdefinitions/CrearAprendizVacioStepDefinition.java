@@ -30,8 +30,8 @@ public class CrearAprendizVacioStepDefinition extends ApiSetUp {
             LOGGER.warn(e.getMessage());
         }
     }
-    @When("el administrador envia la petición crear aprendiz con  el nombre {string} y el email  {string}")
-    public void elAdministradorEnviaLaPeticiónCrearAprendizConElNombreYElEmail(String nombre, String correo) {
+    @When("el administrador envia la peticion crear aprendiz con  el nombre {string} y el email  {string}")
+    public void elAdministradorEnviaLaPeticionCrearAprendizConElNombreYElEmail(String nombre, String correo) {
         try{
             usuario.setName(nombre);
             usuario.setEmail(correo);
@@ -46,15 +46,15 @@ public class CrearAprendizVacioStepDefinition extends ApiSetUp {
             LOGGER.warn(e.getMessage());
         }
     }
-    @Then("no se creara el usuario de aprendiz con datos vacíos y se recibirá un estatus {int}")
-    public void noSeCrearaElUsuarioDeAprendizConDatosVacíosYSeRecibiráUnEstatus(Integer status) {
+    @Then("no se creara el usuario de aprendiz con datos vacios y se recibira un estatus {int}")
+    public void noSeCrearaElUsuarioDeAprendizConDatosVaciosYSeRecibiraUnEstatus(Integer status) {
         try {
             Response actualResponse = returnResponse().answeredBy(actor);
             LOGGER.info(actualResponse.asString());
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(status)),
-                    seeThat("Retorna información",
+                    seeThat("Retorna informacion",
                             act -> actualResponse, notNullValue())
             );
             LOGGER.info("Asercion exitosa");

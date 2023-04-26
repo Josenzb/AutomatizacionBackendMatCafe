@@ -29,8 +29,8 @@ public class BuscarAprendizFallidoStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("el administrador envia la petición con correos no registrados {string}")
-    public void elAdministradorEnviaLaPeticiónConCorreosNoRegistrados(String correo) {
+    @When("el administrador envia la peticion con correos no registrados {string}")
+    public void elAdministradorEnviaLaPeticionConCorreosNoRegistrados(String correo) {
         try{
             actor.attemptsTo(
                     doGet()
@@ -49,7 +49,7 @@ public class BuscarAprendizFallidoStepDefinition extends ApiSetUp {
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(status)),
-                    seeThat("Retorna información",
+                    seeThat("Retorna informacion",
                             act -> actualResponse, notNullValue())
             );
             LOGGER.info("Asercion exitosa");

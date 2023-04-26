@@ -39,7 +39,7 @@ public class ObtenerRutaIdStepDefinition extends ApiSetUp {
 
         } catch (Exception e) {
 
-            LOGGER.error("Error al enviar la petición Get");
+            LOGGER.error("Error al enviar la peticion Get");
             LOGGER.error(e.getMessage());
             LOGGER.error(String.valueOf(e.getCause()));
             Assertions.fail();
@@ -59,7 +59,7 @@ public class ObtenerRutaIdStepDefinition extends ApiSetUp {
                             response -> response.body(notNullValue()))
             );
 
-            LOGGER.info("Asercion pasada. La respuesta tiene el código de estado esperado");
+            LOGGER.info("Asercion pasada. La respuesta tiene el codigo de estado esperado");
         } catch (Exception e) {
             LOGGER.error("Test fallido");
             LOGGER.error(e.getMessage());

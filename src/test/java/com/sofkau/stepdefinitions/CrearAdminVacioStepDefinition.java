@@ -29,8 +29,8 @@ public class CrearAdminVacioStepDefinition extends ApiSetUp {
             LOGGER.warn(e.getMessage());
         }
     }
-    @When("el administrador envía la petición con  el nombre {string} y el email  {string}")
-    public void elAdministradorEnvíaLaPeticiónConElNombreYElEmail(String nombre, String correo) {
+    @When("el administrador envia la peticion con  el nombre {string} y el email  {string}")
+    public void elAdministradorEnviaLaPeticionConElNombreYElEmail(String nombre, String correo) {
         try{
             usuario.setName(nombre);
             usuario.setEmail(correo);
@@ -45,15 +45,15 @@ public class CrearAdminVacioStepDefinition extends ApiSetUp {
             LOGGER.warn(e.getMessage());
         }
     }
-    @Then("no se creará el usuario con datos vacíos y se recibirá un estatus {int}")
-    public void noSeCrearáElUsuarioConDatosVacíosYSeRecibiráUnEstatus(Integer status) {
+    @Then("no se creara el usuario con datos vacios y se recibira un estatus {int}")
+    public void noSeCrearaElUsuarioConDatosVaciosYSeRecibiraUnEstatus(Integer status) {
         try {
             Response actualResponse = returnResponse().answeredBy(actor);
             LOGGER.info(actualResponse.asString());
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(status)),
-                    seeThat("Retorna información",
+                    seeThat("Retorna informacion",
                             act -> actualResponse, notNullValue())
             );
             LOGGER.info("Asercion exitosa");

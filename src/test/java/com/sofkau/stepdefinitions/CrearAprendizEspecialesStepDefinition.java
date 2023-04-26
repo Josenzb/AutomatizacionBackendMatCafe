@@ -30,8 +30,8 @@ public class CrearAprendizEspecialesStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("el administrador envía la petición con el nombre truncado {string} y el email  {string} para aprendiz")
-    public void elAdministradorEnvíaLaPeticiónConElNombreTruncadoYElEmailParaAprendiz(String nombre, String correo) {
+    @When("el administrador envía la peticion con el nombre truncado {string} y el email  {string} para aprendiz")
+    public void elAdministradorEnvíaLaPeticionConElNombreTruncadoYElEmailParaAprendiz(String nombre, String correo) {
         try{
             usuario.setName(nombre);
             usuario.setEmail(correo);
@@ -46,15 +46,15 @@ public class CrearAprendizEspecialesStepDefinition extends ApiSetUp {
             LOGGER.warn(e.getMessage());
         }
     }
-    @Then("no se creará el usuario de aprendiz con datos especiales y se recibirá un estatus {int}")
-    public void noSeCrearáElUsuarioDeAprendizConDatosEspecialesYSeRecibiráUnEstatus(Integer status) {
+    @Then("no se creara el usuario de aprendiz con datos especiales y se recibira un estatus {int}")
+    public void noSeCrearaElUsuarioDeAprendizConDatosEspecialesYSeRecibiraUnEstatus(Integer status) {
         try {
             Response actualResponse = returnResponse().answeredBy(actor);
             LOGGER.info(actualResponse.asString());
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(status)),
-                    seeThat("Retorna información",
+                    seeThat("Retorna informacion",
                             act -> actualResponse, notNullValue())
             );
             LOGGER.info("Asercion exitosa");

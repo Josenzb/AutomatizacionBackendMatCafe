@@ -46,15 +46,15 @@ public class CrearAprendizExistenteStepDefinition extends ApiSetUp {
             LOGGER.warn(e.getMessage());
         }
     }
-    @Then("no se creara la cuenta de aprendiz y se recibirá un codigo de status {string}")
-    public void noSeCrearaLaCuentaDeAprendizYSeRecibiráUnCodigoDeStatus(String status) {
+    @Then("no se creara la cuenta de aprendiz y se recibira un codigo de status {string}")
+    public void noSeCrearaLaCuentaDeAprendizYSeRecibiraUnCodigoDeStatus(String status) {
         try {
             Response actualResponse = returnResponse().answeredBy(actor);
             LOGGER.info(actualResponse.asString());
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(Integer.parseInt(status))),
-                    seeThat("Retorna información",
+                    seeThat("Retorna informacion",
                             act -> actualResponse, notNullValue())
             );
             LOGGER.info("Asercion exitosa");

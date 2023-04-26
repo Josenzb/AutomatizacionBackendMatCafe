@@ -21,8 +21,8 @@ public class CrearAprendizExitosoStepDefinition extends ApiSetUp {
 
     public static Logger LOGGER= Logger.getLogger(CrearAprendizExitosoStepDefinition.class);
     private final Usuario usuario= new Usuario();
-    @Given("que el administrador realiza una petición para crear un usuario con el rol de aprendiz")
-    public void queElAdministradorRealizaUnaPeticiónParaCrearUnUsuarioConElRolDeAprendiz() {
+    @Given("que el administrador realiza una peticion para crear un usuario con el rol de aprendiz")
+    public void queElAdministradorRealizaUnaPeticionParaCrearUnUsuarioConElRolDeAprendiz() {
         try{
             setUp(BASE_URL.getValue());
             LOGGER.info("Empezando peticion");
@@ -31,8 +31,8 @@ public class CrearAprendizExitosoStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("el administrador envía la petición con el nombre {string} y el correo {string} del aprendiz")
-    public void elAdministradorEnvíaLaPeticiónConElNombreYElCorreoDelAprendiz(String nameUser, String email) {
+    @When("el administrador envia la peticion con el nombre {string} y el correo {string} del aprendiz")
+    public void elAdministradorEnviaLaPeticionConElNombreYElCorreoDelAprendiz(String nameUser, String email) {
         try{
             usuario.setName(nameUser);
             usuario.setEmail(email);
@@ -47,15 +47,15 @@ public class CrearAprendizExitosoStepDefinition extends ApiSetUp {
             LOGGER.warn(e.getMessage());
         }
     }
-    @Then("se creará el usuario aprendiz correctamente")
-    public void seCrearáElUsuarioAprendizCorrectamente() {
+    @Then("se creara el usuario aprendiz correctamente")
+    public void seCrearaElUsuarioAprendizCorrectamente() {
         try {
             Response actualResponse = returnResponse().answeredBy(actor);
             LOGGER.info(actualResponse.asString());
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(201)),
-                    seeThat("Retorna información",
+                    seeThat("Retorna informacion",
                             act -> actualResponse, notNullValue())
             );
             LOGGER.info("Asercion exitosa");

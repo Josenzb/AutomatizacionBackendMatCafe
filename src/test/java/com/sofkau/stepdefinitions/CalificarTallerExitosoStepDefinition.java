@@ -20,8 +20,8 @@ public class CalificarTallerExitosoStepDefinition extends ApiSetUp {
     public static Logger LOGGER= Logger.getLogger(CalificarTallerExitosoStepDefinition.class);
     private final Calificacion calificacion = new Calificacion();
 
-    @Given("que el administrador realiza una petición de calificacion de reto")
-    public void queElAdministradorRealizaUnaPeticiónDeCalificacionDeReto() {
+    @Given("que el administrador realiza una peticion de calificacion de reto")
+    public void queElAdministradorRealizaUnaPeticionDeCalificacionDeReto() {
         try{
             setUp(BASE_URL.getValue());
             LOGGER.info("Empezando peticion");
@@ -30,8 +30,8 @@ public class CalificarTallerExitosoStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("el administrador envía la petición con la {int} el comentario {string} el idcurso {string} y la idaprendiz {string}")
-    public void elAdministradorEnvíaLaPeticiónConLaElComentarioElIdcursoYLaIdaprendiz(Integer nota, String comentario,
+    @When("el administrador envia la peticion con la {int} el comentario {string} el idcurso {string} y la idaprendiz {string}")
+    public void elAdministradorEnviaLaPeticionConLaElComentarioElIdcursoYLaIdaprendiz(Integer nota, String comentario,
                                                                                       String idCurso, String idAprendiz) {
         try{
             calificacion.setGrade(nota);
@@ -57,7 +57,7 @@ public class CalificarTallerExitosoStepDefinition extends ApiSetUp {
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(201)),
-                    seeThat("Retorna información",
+                    seeThat("Retorna informacion",
                             act -> actualResponse, notNullValue())
             );
             LOGGER.info("Asercion exitosa");
