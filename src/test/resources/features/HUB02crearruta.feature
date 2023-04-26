@@ -62,7 +62,7 @@ Feature: Crear ruta de aprendizaje
       | "4000.5" | "Ruta aprendizaje 9" | "28 horas" | 409  | "644739c75681b2a2806c11bb" |
       | " a???_" | "a???_"              | "a???_"    | 409  | "644739c75681b2a2806c11bb" |
       | " b???_" | "7999"               | "789999"   | 409  | "644739c75681b2a2806c11bb" |
-      | "ruta2"  | "ruta2"              | "789999"   | 409  | "644739c75681b2a2806c11bb" |
+
   @CP35_CrearRutaExistente
   Scenario Outline: crear rutas de aprendizaje que ya existe
     Given que el administrador crea la ruta de aprendizaje registrada

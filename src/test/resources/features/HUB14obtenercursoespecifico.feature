@@ -11,10 +11,9 @@ Feature:Obtener un curso especifico
 
     Examples:
       | title                  | description                      | duration   | requirements           | content          | adminID                    | CursoId                     | estatusCode |
-      | "Titulo de curso uno"  | "Este es mi primer super curso"  | "28 dias " | "Ningun requerimiento" | "Contenido uno"  | "644739c75681b2a2806c11bb" | "/64495db50568fcae4b0a224a" | 200         |
+      | "Titulo de curso uno"  | "Este es mi primer curso"        | "28 dias " | "Ningun requerimiento" | "Contenido uno"  | "644739c75681b2a2806c11bb" | "/64495db50568fcae4b0a224a" | 200         |
       | "Titulo de curso dos"  | "Este es mi segundo super curso" | "28 dias " | "Ningun requerimiento" | "Contenido dos"  | "644739c75681b2a2806c11bb" | "/64495db80568fcae4b0a224e" | 200         |
       | "Titulo de curso tres" | "Este es mi tercer super curso"  | "28 dias " | "Ningun requerimiento" | "Contenido tres" | "644739c75681b2a2806c11bb" | "/64495db90568fcae4b0a2252" | 200         |
-
 
   @CP_ObtenerCursoEspecificoConUnIdQueNoExisteyEnBlanco
   Scenario Outline:  obtener curso con un id especifico que no existe
