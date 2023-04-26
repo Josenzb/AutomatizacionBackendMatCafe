@@ -1,15 +1,13 @@
 package com.sofkau.runners;
-
 import io.cucumber.junit.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
 import org.junit.runner.RunWith;
-
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        features = {"src/test/resources/features/HUB04obtenerruta.feature"},
+        features = {"src/test/resources/features/HUB10editarcurso.feature"},
         glue = {"com.sofkau.stepdefinitions"},
-        tags = {""}
+        tags = {}
 )
-public class ObtenerRutaTest {
+public class EditarCursoPorIdTest {
 }
