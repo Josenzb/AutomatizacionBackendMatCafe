@@ -57,7 +57,7 @@ public class RutaSinCursosStepDefinitions extends ApiSetUp {
         }
     }
 
-    @Then("no se registrara la ruta y retornara un status  {int}")
+    @Then("no se registrara la ruta y retornara un status {int}")
     public void noSeRegistraraLaRutaYUnStatus(Integer code) {
         try {
             actor.should(

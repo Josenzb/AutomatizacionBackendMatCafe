@@ -17,11 +17,12 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
-public class CrearAdminVacioStepDefinition extends ApiSetUp {
-    public static Logger LOGGER= Logger.getLogger(CrearAdminVacioStepDefinition.class);
+public class CrearAdministradorExitosoStepDefinition extends ApiSetUp {
+    public static Logger LOGGER= Logger.getLogger(CrearAdministradorExitosoStepDefinition.class);
     private final Usuario usuario= new Usuario();
-    @Given("el administrador desea crear cuentas de usuario")
-    public void elAdministradorDeseaCrearCuentasDeUsuario() {
+
+    @Given("que el administrador realiza una peticion para crear un usuario con el rol de administrador")
+    public void queElAdministradorRealizaUnaPeticionParaCrearUnUsuarioConElRolDeAdministrador() {
         try{
             setUp(BASE_URL.getValue());
             LOGGER.info("Empezando peticion");
@@ -29,11 +30,12 @@ public class CrearAdminVacioStepDefinition extends ApiSetUp {
             LOGGER.warn(e.getMessage());
         }
     }
-    @When("el administrador envia la peticion con  el nombre {string} y el email  {string}")
-    public void elAdministradorEnviaLaPeticionConElNombreYElEmail(String nombre, String correo) {
+
+    @When("el administrador envia la peticion con el nombre {string} y el correo {string}")
+    public void elAdministradorEnviaLaPeticionConElNombreYElCorreo(String nameUser, String email) {
         try{
-            usuario.setName(nombre);
-            usuario.setEmail(correo);
+            usuario.setName(nameUser);
+            usuario.setEmail(email);
             usuario.setRol(true);
             actor.attemptsTo(
                     doPost()
@@ -45,15 +47,16 @@ public class CrearAdminVacioStepDefinition extends ApiSetUp {
             LOGGER.warn(e.getMessage());
         }
     }
-    @Then("no se creara el usuario con datos vacios y se recibira un estatus {int}")
-    public void noSeCrearaElUsuarioConDatosVaciosYSeRecibiraUnEstatus(Integer status) {
+
+    @Then("se creara el usuario correctamente")
+    public void seCrearaElUsuarioCorrectamente() {
         try {
             Response actualResponse = returnResponse().answeredBy(actor);
             LOGGER.info(actualResponse.asString());
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
-                            response -> response.statusCode(status)),
-                    seeThat("Retorna informacion",
+                            response -> response.statusCode(201)),
+                    seeThat("Retorna información",
                             act -> actualResponse, notNullValue())
             );
             LOGGER.info("Asercion exitosa");

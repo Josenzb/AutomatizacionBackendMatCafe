@@ -22,9 +22,9 @@ Feature: Crear cuenta de usuario
     Then no se creara el usuario con datos vacios y se recibira un estatus <status>
     Examples:
       | name    | email             | status |
-      | ""      | ""                | 400    |
-      | "Admin" | ""                | 400    |
-      | ""      | "Admin@gmail.com" | 400    |
+      | ""      | ""                | 409    |
+      | "Admin" | ""                | 409    |
+      | ""      | "Admin@gmail.com" | 409    |
 
   @CrearUsuarios
   Scenario Outline: Envio de datos para la creacion de usuario aprendiz vacios
@@ -33,9 +33,9 @@ Feature: Crear cuenta de usuario
     Then no se creara el usuario de aprendiz con datos vacios y se recibira un estatus <status>
     Examples:
       | name       | email                | status |
-      | ""         | ""                   | 400    |
-      | "Aprendiz" | ""                   | 400    |
-      | ""         | "Aprendiz@gmail.com" | 400    |
+      | ""         | ""                   | 409    |
+      | "Aprendiz" | ""                   | 409    |
+      | ""         | "Aprendiz@gmail.com" | 409    |
 
   @CrearUsuarios
   Scenario Outline: Creacion usuarios admin con caracteres especiales y numericos en el nombre
@@ -44,11 +44,11 @@ Feature: Crear cuenta de usuario
     Then no se creara el usuario con datos especiales y se recibira un estatus <status>
     Examples:
       | name       | email             | status |
-      | "Pepe123"  | "pe@gmail.com"    | 400    |
-      | "123Pepe"  | "pep@gmail.com"   | 400    |
-      | "_Pepe"    | "pepe@gmail.com"  | 400    |
-      | "Pepe-*_*" | "pepe1@gmail.com" | 400    |
-      | "Pepe***"  | "pepe2@gmail.com" | 400    |
+      | "Pepe123"  | "pe@gmail.com"    | 409    |
+      | "123Pepe"  | "pep@gmail.com"   | 409    |
+      | "_Pepe"    | "pepe@gmail.com"  | 409    |
+      | "Pepe-*_*" | "pepe1@gmail.com" | 409    |
+      | "Pepe***"  | "pepe2@gmail.com" | 409    |
 
   @CrearUsuarios
   Scenario Outline: Creacion usuarios aprendiz con caracteres especiales y numericos en el nombre
@@ -57,44 +57,44 @@ Feature: Crear cuenta de usuario
     Then no se creara el usuario de aprendiz con datos especiales y se recibira un estatus <status>
     Examples:
       | name         | email             | status |
-      | "Juan123"    | "jo@gmail.com"    | 400    |
-      | "123Juan"    | "joj@gmail.com"   | 400    |
-      | "_Juan#"     | "jojo@gmail.com"  | 400    |
-      | "Juan/&-*_*" | "jojo1@gmail.com" | 400    |
-      | "Juan***"    | "jijo2@gmail.com" | 400    |
+      | "Juan123"    | "jo@gmail.com"    | 409    |
+      | "123Juan"    | "joj@gmail.com"   | 409    |
+      | "_Juan#"     | "jojo@gmail.com"  | 409    |
+      | "Juan/&-*_*" | "jojo1@gmail.com" | 409    |
+      | "Juan***"    | "jijo2@gmail.com" | 409    |
 
   @CrearUsuarios
   Scenario: Crear administrador existente
     Given que el administrador intenta crear un usuario admin ya existente
     When se envia la peticion con el nombre "Franco" y el correo "Franco@auirro1ba.com"
-    Then no se creara la cuenta de usuario y se recibira un codigo de status "400"
+    Then no se creara la cuenta de usuario y se recibira un codigo de status "409"
 
   @CrearUsuarios
   Scenario: Crear aprendiz existente
     Given que el administrador intenta crear un usuario aprendiz ya existente
-    When se envia la peticion con el nombre "Juanes" y el correo "juanpz@gmail.com"
-    Then no se creara la cuenta de aprendiz y se recibira un codigo de status "400"
+    When se envia la peticion con el nombre "Juanes" y el correo "juanpz@gmail.com" como aprendiz
+    Then no se creara la cuenta de aprendiz y se recibira un codigo de status "409"
 
   @CrearUsuarios
   Scenario: Crear administrador con correo de un aprendiz
     Given que el administrador intenta crear un usuario admin con el correo de un estudiante
-    When se envia la peticion con el nombre "Franco" y el correo "juanpz@gmail.com" como aprendiz
-    Then no se creara la cuenta y se recibira un codigo de status "400"
+    When se envia la peticion con el nombre "Franco" y el correo "juanpz@gmail.com" con rol aprendiz
+    Then no se creara la cuenta y se recibira un codigo de status "409"
 
   @CrearUsuarios
   Scenario: Crear aprendiz con correo de un administrador
     Given que el administrador intenta crear un usuario aprendiz con el correo de un admin
     When se envia la peticion con el nombre "Franco" y el correo "Franco@auirro1ba.com" como admin
-    Then no se creara la cuenta aprendiz y se recibira un codigo de status "400"
+    Then no se creara la cuenta aprendiz y se recibira un codigo de status "409"
 
   @CrearUsuarios
   Scenario: Crear admin con un correo invalido
     Given que el administrador intenta crear un usuario admin con un correo invalido
     When se envia la peticion con el nombre "Andres vega" y el correo invalido "Franco.com"
-    Then no se creara la cuenta de admin se recibira un codigo de status "400"
+    Then no se creara la cuenta de admin se recibira un codigo de status "409"
 
   @CrearUsuarios
   Scenario: Crear aprendiz con un correo invalido
     Given que el administrador intenta crear un usuario aprendiz con un correo invalido
     When se envia la peticion con el nombre "Paulo vega" y el correo invalido "pepe.com" como aprendiz
-    Then no se creara la cuenta de aprendiz se recibira un codigo de status "400"
+    Then no se creara la cuenta de aprendiz se recibira un codigo de status "409"

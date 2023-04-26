@@ -12,14 +12,15 @@ import org.json.simple.parser.JSONParser;
 
 import static com.sofkau.questions.ReturnResponse.returnResponse;
 import static com.sofkau.tasks.DoGet.doGet;
-import static com.sofkau.utils.UrlResources.*;
+import static com.sofkau.utils.UrlResources.BASE_URL;
+import static com.sofkau.utils.UrlResources.RESOURCE_SEARCH_ADMIN;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class BuscarAdminExitosoStepDefinition extends ApiSetUp {
-    public static Logger LOGGER= Logger.getLogger(BuscarAprendizExitosoStepDefinition.class);
+    public static Logger LOGGER= Logger.getLogger(BuscarAdminExitosoStepDefinition.class);
     JSONObject responseBody = null;
     JSONParser parser = new JSONParser();
     @Given("que el administrador realiza una peticion para obtener la cuenta de un administrador")
@@ -33,7 +34,7 @@ public class BuscarAdminExitosoStepDefinition extends ApiSetUp {
     }
 
     @When("el administrador envia la peticion con el correo del admin {string}")
-    public void elAdministradorEnviaLaPeticionConElCorreoDelAdmin(String correo) {
+    public void elAdministradorEnvíaLaPeticionConElCorreoDelAdmin(String correo) {
         try{
             actor.attemptsTo(
                     doGet()
@@ -54,7 +55,7 @@ public class BuscarAdminExitosoStepDefinition extends ApiSetUp {
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(Integer.parseInt(status))),
-                    seeThat("Retorna informacion",
+                    seeThat("Retorna información",
                             act -> actualResponse, notNullValue()),
                     seeThat("Validar el correo",
                             email -> responseBody.get("email"), equalTo(correo))

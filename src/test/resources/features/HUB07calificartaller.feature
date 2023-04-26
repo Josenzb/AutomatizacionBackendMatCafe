@@ -21,8 +21,8 @@ Feature: Calificar taller
       | calificacion | comentario     | courseid                   | idlearner                  | status |
       | 0            | "debe mejorar" | "644739d05681b2a2806c11bf" | "644756609a1062742d432b9e" | 201    |
       | 12           | "debe mejorar" | "644739d05681b2a2806c11bf" | "644756609a1062742d432b9e" | 201    |
-      | -1           | "debe mejorar" | "644739d05681b2a2806c11bf" | "644756609a1062742d432b9e" | 400    |
-      | 13           | "debe mejorar" | "644739d05681b2a2806c11bf" | "644756609a1062742d432b9e" | 400    |
+      | -1           | "debe mejorar" | "644739d05681b2a2806c11bf" | "644756609a1062742d432b9e" | 409    |
+      | 13           | "debe mejorar" | "644739d05681b2a2806c11bf" | "644756609a1062742d432b9e" | 409    |
 
   @Calificacion
   Scenario Outline: Calificar reto con id de curso incorrecta
@@ -31,4 +31,4 @@ Feature: Calificar taller
     Then no se calificara y se generara un mensaje de error junto a un <status>
     Examples:
       | calificacion | comentario     | courseid                   | idlearner                  | status |
-      | 6            | "debe mejorar" | "644739d05681b2a2806c11bf" | "644756609a1062742d432b9e" | 400    |
+      | 6            | "debe mejorar" | "644739d05681b2a2806c11bf" | "644756609a1062742d432b9e" | 409    |

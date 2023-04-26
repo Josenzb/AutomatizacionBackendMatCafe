@@ -16,6 +16,6 @@ Feature: Buscar administrador por email
     Then se recibira una respuesta con el codigo <status> y un mensaje de correo no encontrado en admin
     Examples:
       | correo          | status |
-      | "abel@abel.com" | 404    |
-      | "correojejej"   | 404    |
-      | "4654613264"    | 404    |
+      | "abel@abel.com" | 409    |
+      | "correojejej"   | 409    |
+      | "4654613264"    | 409    |

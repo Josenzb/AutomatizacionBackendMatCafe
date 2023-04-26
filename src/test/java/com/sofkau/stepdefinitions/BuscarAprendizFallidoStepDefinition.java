@@ -8,7 +8,6 @@ import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.apache.log4j.Logger;
 
-
 import static com.sofkau.questions.ReturnResponse.returnResponse;
 import static com.sofkau.tasks.DoGet.doGet;
 import static com.sofkau.utils.UrlResources.BASE_URL;
@@ -49,7 +48,7 @@ public class BuscarAprendizFallidoStepDefinition extends ApiSetUp {
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(status)),
-                    seeThat("Retorna informacion",
+                    seeThat("Retorna información",
                             act -> actualResponse, notNullValue())
             );
             LOGGER.info("Asercion exitosa");

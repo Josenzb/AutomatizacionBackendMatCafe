@@ -10,13 +10,14 @@ import org.apache.log4j.Logger;
 
 import static com.sofkau.questions.ReturnResponse.returnResponse;
 import static com.sofkau.tasks.DoGet.doGet;
-import static com.sofkau.utils.UrlResources.*;
+import static com.sofkau.utils.UrlResources.BASE_URL;
+import static com.sofkau.utils.UrlResources.RESOURCE_SEARCH_ACCOUNTS;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class BuscarCuentasFallidoStepDefinition extends ApiSetUp {
-    public static Logger LOGGER= Logger.getLogger(BuscarAprendizFallidoStepDefinition.class);
+    public static Logger LOGGER= Logger.getLogger(BuscarCuentasFallidoStepDefinition.class);
     @Given("que el administrador realiza una peticion para obtener una cuenta invalida")
     public void queElAdministradorRealizaUnaPeticionParaObtenerUnaCuentaInvalida() {
         try{
@@ -27,7 +28,7 @@ public class BuscarCuentasFallidoStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("el administrador envia la peticion con el correo invalido {string}")
+    @When("el administrador envaa la peticion con el correo invalido {string}")
     public void elAdministradorEnviaLaPeticionConElCorreoInvalido(String correo) {
         try{
             actor.attemptsTo(
@@ -47,7 +48,7 @@ public class BuscarCuentasFallidoStepDefinition extends ApiSetUp {
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_OK,
                             response -> response.statusCode(status)),
-                    seeThat("Retorna informacion",
+                    seeThat("Retorna información",
                             act -> actualResponse, notNullValue())
             );
             LOGGER.info("Asercion exitosa");

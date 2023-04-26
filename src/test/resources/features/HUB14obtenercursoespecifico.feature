@@ -10,10 +10,10 @@ Feature:Obtener un curso especifico
     Then se obtendra el curso junto con un estatus <estatusCode>
 
     Examples:
-      | title                  | description                | duration   | requirements           | content          | adminID                    | CursoId                     | estatusCode |
-      | "Titulo de curso uno"  | "Este es mi primer curso"  | "28 dias " | "Ningun requerimiento" | "Contenido uno"  | "644739c75681b2a2806c11bb" | "/64486d3ee11f94e014380e88" | 200         |
-      | "Titulo de curso dos"  | "Este es mi segundo curso" | "28 dias " | "Ningun requerimiento" | "Contenido dos"  | "644739c75681b2a2806c11bb" | "/64486d41e11f94e014380e8c" | 200         |
-      | "Titulo de curso tres" | "Este es mi tercer  curso" | "28 dias " | "Ningun requerimiento" | "Contenido tres" | "644739c75681b2a2806c11bb" | "/64486d42e11f94e014380e90" | 200         |
+      | title                  | description                      | duration   | requirements           | content          | adminID                    | CursoId                     | estatusCode |
+      | "Titulo de curso uno"  | "Este es mi primer super curso"  | "28 dias " | "Ningun requerimiento" | "Contenido uno"  | "644739c75681b2a2806c11bb" | "/64495db50568fcae4b0a224a" | 200         |
+      | "Titulo de curso dos"  | "Este es mi segundo super curso" | "28 dias " | "Ningun requerimiento" | "Contenido dos"  | "644739c75681b2a2806c11bb" | "/64495db80568fcae4b0a224e" | 200         |
+      | "Titulo de curso tres" | "Este es mi tercer super curso"  | "28 dias " | "Ningun requerimiento" | "Contenido tres" | "644739c75681b2a2806c11bb" | "/64495db90568fcae4b0a2252" | 200         |
 
 
   @CP_ObtenerCursoEspecificoConUnIdQueNoExisteyEnBlanco
@@ -24,6 +24,6 @@ Feature:Obtener un curso especifico
 
     Examples:
       | title                  | description                | duration   | requirements           | content          | adminID                    | CursoId | estatusCode |
-      | "Titulo de curso uno"  | "Este es mi primer curso"  | "28 dias " | "Ningun requerimiento" | "Contenido uno"  | "644739c75681b2a2806c11bb" | "/1"    | 400         |
-      | "Titulo de curso dos"  | "Este es mi segundo curso" | "28 dias " | "Ningun requerimiento" | "Contenido dos"  | "644739c75681b2a2806c11bb" | "/2"    | 400         |
-      | "Titulo de curso tres" | "Este es mi tercer  curso" | "28 dias " | "Ningun requerimiento" | "Contenido tres" | "644739c75681b2a2806c11bb" | "/3"    | 400         |
+      | "Titulo de curso uno"  | "Este es mi primer curso"  | "28 dias " | "Ningun requerimiento" | "Contenido uno"  | "644739c75681b2a2806c11bb" | "/1"    | 409         |
+      | "Titulo de curso dos"  | "Este es mi segundo curso" | "28 dias " | "Ningun requerimiento" | "Contenido dos"  | "644739c75681b2a2806c11bb" | "/2"    | 409         |
+      | "Titulo de curso tres" | "Este es mi tercer  curso" | "28 dias " | "Ningun requerimiento" | "Contenido tres" | "644739c75681b2a2806c11bb" | "/3"    | 409         |
