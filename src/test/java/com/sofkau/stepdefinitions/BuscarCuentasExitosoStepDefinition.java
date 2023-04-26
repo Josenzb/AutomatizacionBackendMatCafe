@@ -12,18 +12,20 @@ import org.json.simple.parser.JSONParser;
 
 import static com.sofkau.questions.ReturnResponse.returnResponse;
 import static com.sofkau.tasks.DoGet.doGet;
-import static com.sofkau.utils.UrlResources.*;
+import static com.sofkau.utils.UrlResources.BASE_URL;
+import static com.sofkau.utils.UrlResources.RESOURCE_SEARCH_ACCOUNTS;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class BuscarCuentasExitosoStepDefinition extends ApiSetUp {
-    public static Logger LOGGER= Logger.getLogger(BuscarAprendizExitosoStepDefinition.class);
+    public static Logger LOGGER= Logger.getLogger(BuscarCuentasExitosoStepDefinition.class);
     JSONObject responseBody = null;
     JSONParser parser = new JSONParser();
-    @Given("que el administrador realiza una petición para obtener una cuenta")
-    public void queElAdministradorRealizaUnaPeticiónParaObtenerUnaCuenta() {
+
+    @Given("que el administrador realiza una peticion para obtener una cuenta")
+    public void queElAdministradorRealizaUnaPeticionParaObtenerUnaCuenta() {
         try{
             setUp(BASE_URL.getValue());
             LOGGER.info("Empezando peticion");
@@ -32,8 +34,8 @@ public class BuscarCuentasExitosoStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("el administrador envía la peticion con el correo {string}")
-    public void elAdministradorEnvíaLaPeticionConElCorreo(String correo) {
+    @When("el administrador envia la peticion con el correo {string} que desea buscar")
+    public void elAdministradorEnviaLaPeticionConElCorreo(String correo) {
         try{
             actor.attemptsTo(
                     doGet()
@@ -44,6 +46,7 @@ public class BuscarCuentasExitosoStepDefinition extends ApiSetUp {
             LOGGER.warn(e.getMessage());
         }
     }
+
     @Then("se recibira una respuesta con {int} y una cuenta que contenga el {string}")
     public void seRecibiraUnaRespuestaConYUnaCuentaQueContengaEl(Integer status, String correo) {
         try {

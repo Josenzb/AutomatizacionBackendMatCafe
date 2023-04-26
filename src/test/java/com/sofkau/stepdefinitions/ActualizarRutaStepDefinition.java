@@ -68,7 +68,7 @@ public class ActualizarRutaStepDefinition extends ApiSetUp {
                                     .body("adminId", equalTo(ruta.getAdminId()))
                     )
             );
-            LOGGER.info("La respuesta tiene el código de estado esperado");
+            LOGGER.info("La respuesta tiene el codigo de estado esperado");
         } catch (Exception e) {
             LOGGER.error("Test fallido");
             LOGGER.error(e.getMessage());

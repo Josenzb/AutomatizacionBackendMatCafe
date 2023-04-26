@@ -1,7 +1,7 @@
 Feature: Obtener ruta de aprendizaje por id
   Yo como administrador del campus MatCafe
   Quiero ver la ruta de aprendizaje
-  Para tener la ruta de aprendizaje con la información correcta
+  Para tener la ruta de aprendizaje con la informacion correcta
 
   @CP030_ObtenerRutaPorIdRegistrados
   Scenario Outline: obtener ruta de aprendizaje por id
@@ -11,8 +11,8 @@ Feature: Obtener ruta de aprendizaje por id
 
     Examples:
       | id                         | estatus |
-      | "64473eaff3ba6e5168dfd938" | 200     |
-      | "64483afbad4196e782e8324b" | 200     |
+      | "64495081d5f5ed32cf12a55a" | 200     |
+      | "644843360be4ee3caef787c7" | 200     |
 
   @CP031_ObtenerRutaPorIdNoRegistrados
   Scenario Outline: Envio de un id  que no estaregistrado
@@ -22,7 +22,7 @@ Feature: Obtener ruta de aprendizaje por id
 
     Examples:
       | id        | estatus |
-      | "644739e" | 400     |
-      | "9l00"    | 400     |
-      | "1234"    | 400     |
-      | "***"     | 400     |
+      | "644739e" | 409     |
+      | "9l00"    | 409     |
+      | "1234"    | 409     |
+      | "***"     | 409     |

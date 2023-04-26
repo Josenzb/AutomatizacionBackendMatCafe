@@ -63,7 +63,7 @@ public class ActualizarRutasConIdNoRegistradosStepDefinitions extends ApiSetUp {
                     seeThatResponse("El cuerpo de respuesta no debe ser nulo",
                             response -> response.body(notNullValue()))
             );
-            LOGGER.info("La respuesta tiene el código de estado esperado");
+            LOGGER.info("La respuesta tiene el codigo de estado esperado");
         } catch (Exception e) {
             LOGGER.error("Test fallido");
             LOGGER.error(e.getMessage());

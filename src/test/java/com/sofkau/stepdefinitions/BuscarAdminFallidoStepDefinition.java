@@ -10,7 +10,8 @@ import org.apache.log4j.Logger;
 
 import static com.sofkau.questions.ReturnResponse.returnResponse;
 import static com.sofkau.tasks.DoGet.doGet;
-import static com.sofkau.utils.UrlResources.*;
+import static com.sofkau.utils.UrlResources.BASE_URL;
+import static com.sofkau.utils.UrlResources.RESOURCE_SEARCH_ADMIN;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 import static org.hamcrest.CoreMatchers.notNullValue;

@@ -12,7 +12,8 @@ import org.json.simple.parser.JSONParser;
 
 import static com.sofkau.questions.ReturnResponse.returnResponse;
 import static com.sofkau.tasks.DoGet.doGet;
-import static com.sofkau.utils.UrlResources.*;
+import static com.sofkau.utils.UrlResources.BASE_URL;
+import static com.sofkau.utils.UrlResources.RESOURCE_SEARCH_LEARNER;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -23,8 +24,8 @@ public class BuscarAprendizExitosoStepDefinition extends ApiSetUp {
     public static Logger LOGGER= Logger.getLogger(BuscarAprendizExitosoStepDefinition.class);
     JSONObject responseBody = null;
     JSONParser parser = new JSONParser();
-    @Given("que el administrador realiza una petición para obtener la cuenta de un aprendiz")
-    public void queElAdministradorRealizaUnaPeticiónParaObtenerLaCuentaDeUnAprendiz() {
+    @Given("que el administrador realiza una peticion para obtener la cuenta de un aprendiz registrado")
+    public void queElAdministradorRealizaUnaPeticionParaObtenerLaCuentaDeUnAprendiz() {
         try{
             setUp(BASE_URL.getValue());
             LOGGER.info("Empezando peticion");
@@ -33,8 +34,8 @@ public class BuscarAprendizExitosoStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("el administrador envía la petición con el correo {string}")
-    public void elAdministradorEnvíaLaPeticiónConElCorreo(String correo) {
+    @When("el administrador envia la peticion con el correo {string}")
+    public void elAdministradorEnviaLaPeticionConElCorreo(String correo) {
         try{
             actor.attemptsTo(
                     doGet()

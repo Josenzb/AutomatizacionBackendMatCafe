@@ -57,8 +57,8 @@ public class RutaSinCursosStepDefinitions extends ApiSetUp {
         }
     }
 
-    @Then("se registrara la ruta y un status {int}")
-    public void seRegistraraLaRutaYUnStatus(Integer code) {
+    @Then("no se registrara la ruta y retornara un status {int}")
+    public void noSeRegistraraLaRutaYUnStatus(Integer code) {
         try {
             actor.should(
                     seeThatResponse("El codigo de respuesta es: " + HttpStatus.SC_BAD_REQUEST,

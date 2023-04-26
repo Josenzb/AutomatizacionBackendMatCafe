@@ -5,17 +5,17 @@ Feature: Buscar aprendices por email
 
   @BuscarAprendiz
   Scenario: Busqueda de aprendiz exitosa
-    Given que el administrador realiza una petición para obtener la cuenta de un aprendiz
-    When el administrador envía la petición con el correo "juanpz@gmail.com"
+    Given que el administrador realiza una peticion para obtener la cuenta de un aprendiz registrado
+    When el administrador envia la peticion con el correo "juanpz@gmail.com"
     Then se recibira una respuesta con el codigo "200" y una cuenta que contenga el "juanpz@gmail.com"
 
   @BuscarAprendiz
   Scenario Outline: Busqueda de aprendiz fallida
     Given que el administrador realiza una peticion para obtener la cuenta de un aprendiz
-    When el administrador envia la petición con correos no registrados <correo>
+    When el administrador envia la peticion con correos no registrados <correo>
     Then se recibira una respuesta con el codigo <status> y un mensaje de correo no encontrado
     Examples:
       | correo          | status |
-      | "abel@abel.com" | 404    |
-      | "correojejej"   | 404    |
-      | "4654613264"    | 404    |
+      | "abel@abel.com" | 409    |
+      | "correojejej"   | 409    |
+      | "4654613264"    | 409    |

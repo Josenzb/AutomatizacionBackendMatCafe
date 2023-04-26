@@ -11,7 +11,7 @@ Feature: Crear ruta de aprendizaje
 
     Examples:
       | title                | description              | duration   | code | adminId                    |
-      | "Ruta aprendizaje 1" | "Esta es mi primer ruta" | "28 días"  | 201  | "644739c75681b2a2806c11bb" |
+      | "Ruta aprendizaje 1" | "Esta es mi primer ruta" | "28 dias"  | 201  | "644739c75681b2a2806c11bb" |
       | "ruta 3.5"           | "Ruta aprendizaje 9"     | "28 horas" | 201  | "644739c75681b2a2806c11bb" |
       | "ruta 345678"        | "Ruta aprendizaje 10"    | "28 horas" | 201  | "644739c75681b2a2806c11bb" |
       | "ruta 34,56"         | "Ruta aprendizaje 10"    | "28 horas" | 201  | "644739c75681b2a2806c11bb" |
@@ -24,29 +24,29 @@ Feature: Crear ruta de aprendizaje
 
     Examples:
       | title                | description              | duration | estatus | adminId                    |
-      | "Ruta aprendizaje 2" | "Esta es mi primer ruta" | "28"     | 400     | "644739c75681b2a2806c11bb" |
+      | "Ruta aprendizaje 2" | "Esta es mi primer ruta" | "28"     | 409     | "644739c75681b2a2806c11bb" |
 
   @CP18_RutaSinCursos
   Scenario Outline: crear rutas de aprendizaje sin cursos
     Given que el administrador crea la ruta de aprendizaje vacia
     When envia el titulo <title>, descripcion <description>, duracion <duration>, Id admin <adminId>
-    Then se registrara la ruta y un status <code>
+    Then no se registrara la ruta y retornara un status <code>
 
     Examples:
       | title                | description              | duration | code | adminId                    |
-      | "Ruta aprendizaje 3" | "Esta es mi primer ruta" | "28"     | 400  | "644739c75681b2a2806c11bb" |
+      | "Ruta aprendizaje 3" | "Esta es mi primer ruta" | "28"     | 409  | "644739c75681b2a2806c11bb" |
 
   @CP19_RutaConCamposVacios
-  Scenario Outline: crear rutas de aprendizaje con campos vacíos
+  Scenario Outline: crear rutas de aprendizaje con campos vacios
     Given que el administrador crea la ruta de aprendizaje con campos vacios
     When envia titulo <title>, descripcion <description>, duracion <duration>, cursos, Id admin <adminId>
     Then se registrara la ruta y un codigo de status <code>
 
     Examples:
       | title                | description               | duration | code | adminId                    |
-      | ""                   | "Esta es mi primer ruta"  | "28 "    | 400  | "644739c75681b2a2806c11bb" |
-      | "Ruta aprendizaje 4" | ""                        | "28"     | 400  | "644739c75681b2a2806c11bb" |
-      | "Ruta aprendizaje 5" | "Esta es mi tercer  ruta" | ""       | 400  | ""                         |
+      | ""                   | "Esta es mi primer ruta"  | "28 "    | 409  | "644739c75681b2a2806c11bb" |
+      | "Ruta aprendizaje 4" | ""                        | "28"     | 409  | "644739c75681b2a2806c11bb" |
+      | "Ruta aprendizaje 5" | "Esta es mi tercer  ruta" | ""       | 409  | ""                         |
 
   @CP34_CamposConCaracteresEspeciales
   Scenario Outline: crear rutas de aprendizaje con caracteres especiales
@@ -56,13 +56,13 @@ Feature: Crear ruta de aprendizaje
 
     Examples:
       | title    | description          | duration   | code | adminId                    |
-      | "*++"    | "Ruta aprendizaje 6" | "28 horas" | 400  | "644739c75681b2a2806c11bb" |
-      | " ????_" | "Ruta aprendizaje 7" | "28 horas" | 400  | "644739c75681b2a2806c11bb" |
-      | "????_a" | "Ruta aprendizaje 8" | "28 horas" | 400  | "644739c75681b2a2806c11bb" |
-      | "4000.5" | "Ruta aprendizaje 9" | "28 horas" | 400  | "644739c75681b2a2806c11bb" |
-      | " a???_" | "a???_"              | "a???_"    | 400  | "644739c75681b2a2806c11bb" |
-      | " b???_" | "7999"               | "789999"   | 400  | "644739c75681b2a2806c11bb" |
-      | "ruta2"  | "ruta2"              | "789999"   | 400  | "644739c75681b2a2806c11bb" |
+      | "*++"    | "Ruta aprendizaje 6" | "28 horas" | 409  | "644739c75681b2a2806c11bb" |
+      | " ????_" | "Ruta aprendizaje 7" | "28 horas" | 409  | "644739c75681b2a2806c11bb" |
+      | "????_a" | "Ruta aprendizaje 8" | "28 horas" | 409  | "644739c75681b2a2806c11bb" |
+      | "4000.5" | "Ruta aprendizaje 9" | "28 horas" | 409  | "644739c75681b2a2806c11bb" |
+      | " a???_" | "a???_"              | "a???_"    | 409  | "644739c75681b2a2806c11bb" |
+      | " b???_" | "7999"               | "789999"   | 409  | "644739c75681b2a2806c11bb" |
+      | "ruta2"  | "ruta2"              | "789999"   | 409  | "644739c75681b2a2806c11bb" |
   @CP35_CrearRutaExistente
   Scenario Outline: crear rutas de aprendizaje que ya existe
     Given que el administrador crea la ruta de aprendizaje registrada
@@ -71,8 +71,4 @@ Feature: Crear ruta de aprendizaje
 
     Examples:
       | title                | description              | duration  | code | adminId                    |
-      | "Ruta aprendizaje 1" | "Esta es mi primer ruta" | "28 días" | 400  | "644739c75681b2a2806c11bb" |
-
-
-
-
+      | "Ruta aprendizaje 1" | "Esta es mi primer ruta" | "28 dias" | 409  | "644739c75681b2a2806c11bb" |

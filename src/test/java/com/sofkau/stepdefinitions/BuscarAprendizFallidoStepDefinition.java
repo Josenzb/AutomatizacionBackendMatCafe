@@ -8,7 +8,6 @@ import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.apache.log4j.Logger;
 
-
 import static com.sofkau.questions.ReturnResponse.returnResponse;
 import static com.sofkau.tasks.DoGet.doGet;
 import static com.sofkau.utils.UrlResources.BASE_URL;
@@ -29,8 +28,8 @@ public class BuscarAprendizFallidoStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("el administrador envia la petición con correos no registrados {string}")
-    public void elAdministradorEnviaLaPeticiónConCorreosNoRegistrados(String correo) {
+    @When("el administrador envia la peticion con correos no registrados {string}")
+    public void elAdministradorEnviaLaPeticionConCorreosNoRegistrados(String correo) {
         try{
             actor.attemptsTo(
                     doGet()

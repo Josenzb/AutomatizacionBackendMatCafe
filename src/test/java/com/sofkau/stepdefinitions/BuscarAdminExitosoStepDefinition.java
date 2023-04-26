@@ -12,18 +12,19 @@ import org.json.simple.parser.JSONParser;
 
 import static com.sofkau.questions.ReturnResponse.returnResponse;
 import static com.sofkau.tasks.DoGet.doGet;
-import static com.sofkau.utils.UrlResources.*;
+import static com.sofkau.utils.UrlResources.BASE_URL;
+import static com.sofkau.utils.UrlResources.RESOURCE_SEARCH_ADMIN;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class BuscarAdminExitosoStepDefinition extends ApiSetUp {
-    public static Logger LOGGER= Logger.getLogger(BuscarAprendizExitosoStepDefinition.class);
+    public static Logger LOGGER= Logger.getLogger(BuscarAdminExitosoStepDefinition.class);
     JSONObject responseBody = null;
     JSONParser parser = new JSONParser();
-    @Given("que el administrador realiza una petición para obtener la cuenta de un administrador")
-    public void queElAdministradorRealizaUnaPeticiónParaObtenerLaCuentaDeUnAdministrador() {
+    @Given("que el administrador realiza una peticion para obtener la cuenta de un administrador")
+    public void queElAdministradorRealizaUnaPeticionParaObtenerLaCuentaDeUnAdministrador() {
         try{
             setUp(BASE_URL.getValue());
             LOGGER.info("Empezando peticion");
@@ -32,7 +33,7 @@ public class BuscarAdminExitosoStepDefinition extends ApiSetUp {
         }
     }
 
-    @When("el administrador envía la peticion con el correo del admin {string}")
+    @When("el administrador envia la peticion con el correo del admin {string}")
     public void elAdministradorEnvíaLaPeticionConElCorreoDelAdmin(String correo) {
         try{
             actor.attemptsTo(

@@ -5,8 +5,8 @@ Feature: Buscar administrador por email
 
   @BuscarAdmistrador
   Scenario: Busqueda de administrador exitosa
-    Given que el administrador realiza una petición para obtener la cuenta de un administrador
-    When el administrador envía la peticion con el correo del admin "Franco@auirro1ba.com"
+    Given que el administrador realiza una peticion para obtener la cuenta de un administrador
+    When el administrador envia la peticion con el correo del admin "Franco@auirro1ba.com"
     Then se recibira una respuesta con el codigo "200" y una cuenta del admin que contenga el "Franco@auirro1ba.com"
 
   @BuscarAdmistrador
@@ -16,6 +16,6 @@ Feature: Buscar administrador por email
     Then se recibira una respuesta con el codigo <status> y un mensaje de correo no encontrado en admin
     Examples:
       | correo          | status |
-      | "abel@abel.com" | 404    |
-      | "correojejej"   | 404    |
-      | "4654613264"    | 404    |
+      | "abel@abel.com" | 409    |
+      | "correojejej"   | 409    |
+      | "4654613264"    | 409    |

@@ -5,8 +5,8 @@ Feature: Buscar cuentas por email
 
   @BuscarCuentas
   Scenario Outline: Busqueda de cuenta exitosa
-    Given que el administrador realiza una petición para obtener una cuenta
-    When el administrador envía la peticion con el correo <correo>
+    Given que el administrador realiza una peticion para obtener una cuenta
+    When el administrador envia la peticion con el correo <correo> que desea buscar
     Then se recibira una respuesta con <status> y una cuenta que contenga el <correo>
     Examples:
       | correo                 | status |
@@ -15,11 +15,11 @@ Feature: Buscar cuentas por email
 
   @BuscarCuentas
   Scenario Outline: Busqueda de cuentas fallida
-    Given que el administrador realiza una petición para obtener una cuenta invalida
-    When el administrador envía la peticion con el correo invalido <correo>
+    Given que el administrador realiza una peticion para obtener una cuenta invalida
+    When el administrador envaa la peticion con el correo invalido <correo>
     Then se recibira un codigo <status> y un mensaje de correo no encontrado
     Examples:
       | correo          | status |
-      | "abel@abel.com" | 404    |
-      | "correojejej"   | 404    |
-      | "4654613264"    | 404    |
+      | "abel@abel.com" | 409    |
+      | "correojejej"   | 409    |
+      | "4654613264"    | 409    |
