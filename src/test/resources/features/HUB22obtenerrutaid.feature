@@ -11,8 +11,8 @@ Feature: Obtener ruta de aprendizaje por id
 
     Examples:
       | id                         | estatus |
-      | "644739ee5681b2a2806c11ce" | 200     |
-      | "64481f7de11f94e014380d64" | 200     |
+      | "64473eaff3ba6e5168dfd938" | 200     |
+      | "64483afbad4196e782e8324b" | 200     |
 
   @CP031_ObtenerRutaPorIdNoRegistrados
   Scenario Outline: Envio de un id  que no estaregistrado

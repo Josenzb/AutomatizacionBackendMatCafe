@@ -10,10 +10,10 @@ Feature: Crear curso de aprendizaje para la pagina de MatCafe
     Then se registrara el curso y estatus <estatusCode>
 
     Examples:
-      | title                  | description                | duration   | requirements           | content          | adminID                    | estatusCode |
-      | "Titulo de curso uno"  | "Este es mi primer curso"  | "28 dias " | "Ningun requerimiento" | "Contenido uno"  | "644739c75681b2a2806c11bb" | 201         |
-      | "Titulo de curso dos"  | "Este es mi segundo curso" | "28 dias " | "Ningun requerimiento" | "Contenido dos"  | "644739c75681b2a2806c11bb" | 201         |
-      | "Titulo de curso tres" | "Este es mi tercer  curso" | "28 dias " | "Ningun requerimiento" | "Contenido tres" | "644739c75681b2a2806c11bb" | 201         |
+      | title                     | description                      | duration   | requirements           | content          | adminID                    | estatusCode |
+      | "Titulo de curso diez"    | "Este es mi primer super curso"  | "28 dias " | "Ningun requerimiento" | "Contenido uno"  | "644739c75681b2a2806c11bb" | 201         |
+      | "Titulo de curso veinte"  | "Este es mi segundo super curso" | "28 dias " | "Ningun requerimiento" | "Contenido dos"  | "644739c75681b2a2806c11bb" | 201         |
+      | "Titulo de curso treinta" | "Este es mi tercer super curso"  | "28 dias " | "Ningun requerimiento" | "Contenido tres" | "644739c75681b2a2806c11bb" | 201         |
 
 
   @CP_021CrearCursoConCamposVacios

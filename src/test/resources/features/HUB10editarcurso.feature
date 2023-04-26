@@ -10,12 +10,12 @@ Feature: Editar curso del campus MatCafe
     Then se editara el curso junto con un  estatus <estatusCode>
 
     Examples:
-      | title            | description               | duration          | requirements           | content         | adminID                    | cursoId                     | estatusCode |
-      | "Antiguo titulo" | "Este es mi primer curso" | "28 dias "        | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/6447f9d1e11f94e014380c34" | 200         |
-      | "Nuevo titulo"   | "Este es mi primer curso" | "28 dias "        | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/6447f9d1e11f94e014380c34" | 200         |
-      | "Nuevo titulo"   | "Nueva Descripcion"       | "28 dias "        | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/6447f9d1e11f94e014380c34" | 200         |
-      | "Nuevo titulo"   | "Nueva Descripcion"       | "Nueva duracion " | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/6447f9d1e11f94e014380c34" | 200         |
-      | "Nuevo titulo "  | "Nueva Descripcion"       | "Nueva duracion " | "Nuevo requerimiento"  | "Contenido uno" | "644739c75681b2a2806c11bb" | "/6447f9d1e11f94e014380c34" | 200         |
+      | title                 | description               | duration          | requirements           | content         | adminID                    | cursoId                     | estatusCode |
+      | "Antiguo titulo"      | "Este es mi primer curso" | "28 dias "        | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/64486d3ee11f94e014380e88" | 200         |
+      | "Nuevo titulo"        | "Este es mi primer curso" | "28 dias "        | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/64486d3ee11f94e014380e88" | 200         |
+      | "Nuevo titulo"        | "Nueva Descripcion"       | "28 dias "        | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/64486d3ee11f94e014380e88" | 200         |
+      | "Nuevo titulo"        | "Nueva Descripcion"       | "Nueva duracion " | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/64486d3ee11f94e014380e88" | 200         |
+      | "Titulo de curso uno" | "Este es mi primer curso" | "28 dias "        | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/64486d3ee11f94e014380e88" | 200         |
 
 
   @CP_0EditarCursoDejandoCamposVacios
@@ -26,10 +26,10 @@ Feature: Editar curso del campus MatCafe
 
     Examples:
       | title          | description               | duration          | requirements           | content         | adminID                    | cursoId                     | estatusCode |
-      | ""             | "Este es mi primer curso" | "28 dias "        | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/6447f9d1e11f94e014380c34" | 400         |
-      | "Nuevo titulo" | ""                        | "28 dias "        | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/6447f9d1e11f94e014380c34" | 400         |
-      | "Nuevo titulo" | "Nueva Descripcion"       | " "               | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/6447f9d1e11f94e014380c34" | 400         |
-      | "Nuevo titulo" | "Nueva Descripcion"       | "Nueva duracion " | ""                     | "Contenido uno" | "644739c75681b2a2806c11bb" | "/6447f9d1e11f94e014380c34" | 400         |
+      | ""             | "Este es mi primer curso" | "28 dias "        | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/64486d3ee11f94e014380e88" | 400         |
+      | "Nuevo titulo" | ""                        | "28 dias "        | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/64486d3ee11f94e014380e88" | 400         |
+      | "Nuevo titulo" | "Nueva Descripcion"       | " "               | "Ningun requerimiento" | "Contenido uno" | "644739c75681b2a2806c11bb" | "/64486d3ee11f94e014380e88" | 400         |
+      | "Nuevo titulo" | "Nueva Descripcion"       | "Nueva duracion " | ""                     | "Contenido uno" | "644739c75681b2a2806c11bb" | "/64486d3ee11f94e014380e88" | 400         |
 
   @CP_0EditarCursoSinUnIdQueEsDeUnAdmin
   Scenario Outline:  Editar cursos de aprendizaje sin un id de administrador
