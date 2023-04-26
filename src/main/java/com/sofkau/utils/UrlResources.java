@@ -12,7 +12,13 @@ public enum UrlResources {
     RESOURCE_CREAR_CURSO("Course"),
     RESOURCE_CREAR_RUTA("Route"),
     RESOURCE_OBTENER_RUTA("Route/"),
-    RESOURCE_ACTUALIZAR_RUTA("Route/");
+    RESOURCE_ACTUALIZAR_RUTA("Route/"),
+    RESOURCE_ENVIAR_RETO("learner/sendWorkshop"),
+    RESOURCE_SUSCRIBIR_RUTA("learner/subscribeRoute");
+
+
+
+
 
     private final String value;
 
