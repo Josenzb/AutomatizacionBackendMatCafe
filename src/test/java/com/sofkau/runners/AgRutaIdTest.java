@@ -7,9 +7,9 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        features = {"src/test/resources/features/HUB07calificartaller.feature"},
+        features = {"src/test/resources/features/HUB22obtenerrutaid.feature"},
         glue = {"com.sofkau.stepdefinitions"},
-        tags = {"@Calificacion"}
+        tags = {""}
 )
-public class CalificarTallerTest {
+public class AgRutaIdTest {
 }
